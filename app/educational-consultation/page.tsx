@@ -164,7 +164,7 @@ export default function EducationalConsultation() {
           </div>
           <div className="h-[400px]">
             <DestinationCard
-              imageUrl="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&auto=format&fit=crop"
+              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg/1920px-Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg"
               location="Australia"
               flag="🇦🇺"
               stats="410+ Students"
@@ -174,7 +174,7 @@ export default function EducationalConsultation() {
           </div>
           <div className="h-[400px]">
             <DestinationCard
-              imageUrl="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=500&auto=format&fit=crop"
+              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1280px-Brandenburger_Tor_abends.jpg"
               location="Germany"
               flag="🇩🇪"
               stats="380+ Students"
@@ -184,7 +184,7 @@ export default function EducationalConsultation() {
           </div>
           <div className="h-[400px]">
             <DestinationCard
-              imageUrl="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&auto=format&fit=crop"
+              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Singapore_Merlion.jpg/1280px-Singapore_Merlion.jpg"
               location="Singapore"
               flag="🇸🇬"
               stats="290+ Students"
@@ -290,8 +290,8 @@ export default function EducationalConsultation() {
             {message && (
               <div
                 className={`p-4 rounded-lg text-sm ${message.includes('submitted')
-                    ? 'bg-green-50 text-green-800 border border-green-200'
-                    : 'bg-red-50 text-red-800 border border-red-200'
+                  ? 'bg-green-50 text-green-800 border border-green-200'
+                  : 'bg-red-50 text-red-800 border border-red-200'
                   }`}
               >
                 {message}
