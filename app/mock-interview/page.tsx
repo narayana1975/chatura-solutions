@@ -78,8 +78,8 @@ export default function MockInterviewPage() {
                 {/* Person Placeholder */}
                 <div className="relative z-5">
                   <Image
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop"
-                    alt="Professional interviewer"
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-540x700-X5EU7tvyrUtRj1VSi8lUM58dWCMYFd.webp"
+                    alt="Person preparing for interview at laptop"
                     width={200}
                     height={280}
                     className="rounded-lg object-cover"
@@ -143,7 +143,7 @@ export default function MockInterviewPage() {
           {
             title: 'Expert Interviewers',
             description: 'Learn from seasoned professionals who have conducted hundreds of interviews at FAANG companies. Get insider tips on what hiring managers really look for and how to stand out.',
-            link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
+            link: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop',
             color: '#06b6d4',
           },
           {
@@ -179,7 +179,7 @@ export default function MockInterviewPage() {
           <p className="text-blue-100 text-lg mb-8">Join our community of successful professionals today.</p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            className="inline-flex items-center justify-center bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors w-fit"
           >
             Schedule Now
           </Link>
