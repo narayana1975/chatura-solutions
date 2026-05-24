@@ -12,8 +12,8 @@ interface BounceCardFeatureProps {
 
 export const BouncyCardsFeatures = ({ features }: { features: BounceCardFeatureProps[] }) => {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 text-foreground">
-      <div className="mb-12 flex flex-col items-center justify-center text-center">
+    <section className="mx-auto max-w-7xl px-4 py-4 md:py-6 text-foreground">
+      <div className="mb-6 flex flex-col items-center justify-center text-center">
         <h2 className="max-w-2xl text-4xl font-bold md:text-5xl">
           Why Choose Chatura?
         </h2>
@@ -36,7 +36,7 @@ export const BouncyCardsFeatures = ({ features }: { features: BounceCardFeatureP
           </div>
         </BounceCard>
       </div>
-      <div className="mt-4 grid grid-cols-12 gap-4">
+      <div className="mt-2 grid grid-cols-12 gap-4">
         <BounceCard className="col-span-12 md:col-span-8">
           <CardTitle>{features[2]?.title}</CardTitle>
           <div className={`absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl ${features[2]?.gradient} p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]`}>

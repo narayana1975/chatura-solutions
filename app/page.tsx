@@ -134,7 +134,7 @@ export default function Home() {
       />
 
       {/* Mission & Vision Section */}
-      <section className="bg-card border-y border-border py-8 md:py-12">
+      <section className="py-4 md:py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -164,7 +164,7 @@ export default function Home() {
       <BouncyCardsFeatures features={bounceCardFeatures} />
 
       {/* FAQs Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((faq, index) => (
@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-cyan-600 to-teal-600 py-8 md:py-12">
+      <section className="bg-gradient-to-r from-cyan-600 to-teal-600 py-4 md:py-6">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Career?</h2>
           <p className="text-cyan-100 text-lg mb-8">Join thousands of professionals who have advanced their careers with Chatura Solutions.</p>
