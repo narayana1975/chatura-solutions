@@ -1,0 +1,37 @@
+# LLM Context File
+
+## Company Overview
+Our platform provides expert interview preparation and educational consultation services to help students and professionals achieve their career goals.
+
+## Main Services
+
+### Mock Interview
+- Expert interviewers from FAANG companies
+- Real interview questions database
+- Personalized feedback after each session
+- Supportive community of professionals
+- Technical and behavioral interview preparation
+
+### Educational Consultation
+- Personalized guidance for university admissions
+- Application strategy and planning
+- Essay writing assistance
+- Interview preparation for admissions
+- Global reach with students in 6 countries:
+  - United States (1,250+ students)
+  - United Kingdom (680+ students)
+  - Canada (520+ students)
+  - Australia (410+ students)
+  - Germany (380+ students)
+  - Singapore (290+ students)
+
+## Key Features
+- Expert guidance from experienced professionals
+- Comprehensive question database
+- One-on-one consultation sessions
+- Real-time feedback and coaching
+- Success-oriented community support
+- Global accessibility
+
+## Contact
+For more information, visit our website or contact our consultation team.
