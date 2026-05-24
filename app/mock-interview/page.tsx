@@ -141,52 +141,30 @@ export default function MockInterviewPage() {
         projects={[
           {
             title: 'Expert Interviewers',
-            description: 'Practice with seasoned professionals who have conducted hundreds of interviews at top tech companies. Gain insights into what hiring managers really look for.',
+            description: 'Learn from seasoned professionals who have conducted hundreds of interviews at FAANG companies. Get insider tips on what hiring managers really look for and how to stand out.',
             link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
             color: '#06b6d4',
           },
           {
             title: 'Real Interview Questions',
-            description: 'Access a curated database of actual interview questions asked by FAANG and other top companies. Prepare for the exact challenges you&apos;ll face.',
+            description: 'Access a comprehensive database of actual technical and behavioral questions from top companies. Practice with questions that match your target role and company.',
             link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
             color: '#0891b2',
           },
           {
             title: 'Personalized Feedback',
-            description: 'Receive detailed, actionable feedback after each session. Our experts highlight your strengths and provide specific areas for improvement.',
+            description: 'Receive comprehensive feedback after every session highlighting your strengths, areas for improvement, and specific actionable tips to boost your confidence.',
             link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
             color: '#06a8d4',
           },
           {
             title: 'Supportive Community',
-            description: 'Join thousands of candidates on the same journey. Share experiences, tips, and support each other in achieving your career goals.',
+            description: 'Connect with thousands of ambitious professionals preparing for their dream roles. Share experiences, learn from peers, and support each other on this journey.',
             link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
             color: '#0b7ab4',
           },
         ]}
       />
-
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-cyan-600 to-teal-600 py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ace Your Interviews?</h2>
-          <p className="text-cyan-100 text-lg mb-8">Join thousands of professionals who are already improving their interview skills.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold hover:bg-cyan-50 transition-colors"
-            >
-              Schedule Now
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors"
-            >
-              Back to Home
-            </Link>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
