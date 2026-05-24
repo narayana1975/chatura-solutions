@@ -58,8 +58,8 @@ export default function MockInterviewPage() {
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-540x700-X5EU7tvyrUtRj1VSi8lUM58dWCMYFd.webp"
                 alt="Person preparing for interview at laptop"
-                width={400}
-                height={560}
+                width={300}
+                height={420}
                 className="rounded-lg object-cover"
               />
             </div>
