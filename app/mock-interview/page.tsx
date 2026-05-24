@@ -36,7 +36,7 @@ export default function MockInterviewPage() {
           {/* Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column */}
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center -ml-8">
               <h2 className="text-3xl md:text-4xl font-bold text-purple-600 mb-6">
                 Practice mock interviews with peers
               </h2>
@@ -58,8 +58,8 @@ export default function MockInterviewPage() {
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-R1N3iCEXYHbrVZGWCJNKgdmm7C6Rdd.webp"
                 alt="Person preparing for interview at laptop"
-                width={300}
-                height={420}
+                width={450}
+                height={630}
                 className="rounded-lg object-cover"
               />
             </div>
