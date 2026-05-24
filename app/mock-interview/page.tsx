@@ -53,39 +53,15 @@ export default function MockInterviewPage() {
               </div>
             </div>
 
-            {/* Right Column - Image with Form Overlay */}
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-purple-200 to-purple-100 p-8 aspect-square flex items-center justify-center">
-                {/* Form Overlay */}
-                <div className="absolute top-8 right-8 bg-gray-900 text-white px-4 py-2 rounded-lg flex items-center gap-2 z-10 text-sm font-semibold">
-                  <span>👤</span>
-                  Interview Preparation Hub
-                </div>
-
-                {/* Form Fields */}
-                <div className="absolute bottom-8 right-8 space-y-3 z-10">
-                  <div className="bg-white rounded-lg px-4 py-2 shadow-lg w-40">
-                    <p className="text-gray-700 text-sm font-medium">Position</p>
-                  </div>
-                  <div className="bg-white rounded-lg px-4 py-2 shadow-lg w-40">
-                    <p className="text-gray-700 text-sm font-medium">Company</p>
-                  </div>
-                  <div className="bg-white rounded-lg px-4 py-2 shadow-lg w-40">
-                    <p className="text-gray-700 text-sm font-medium">Job Description</p>
-                  </div>
-                </div>
-
-                {/* Person Placeholder */}
-                <div className="relative z-5">
-                  <Image
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-540x700-X5EU7tvyrUtRj1VSi8lUM58dWCMYFd.webp"
-                    alt="Person preparing for interview at laptop"
-                    width={200}
-                    height={280}
-                    className="rounded-lg object-cover"
-                  />
-                </div>
-              </div>
+            {/* Right Column - Image Only */}
+            <div className="flex justify-center">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-540x700-X5EU7tvyrUtRj1VSi8lUM58dWCMYFd.webp"
+                alt="Person preparing for interview at laptop"
+                width={300}
+                height={420}
+                className="rounded-lg object-cover"
+              />
             </div>
           </div>
         </div>
