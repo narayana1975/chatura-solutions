@@ -197,8 +197,6 @@ export default function EducationalConsultation() {
                   </div>
                   <p className="text-muted-foreground text-base leading-relaxed mb-4">{service.description}</p>
                   
-                  {/* Bottom accent */}
-                  <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full group-hover:w-full transition-all duration-300"></div>
                 </div>
               </div>
             ))}
