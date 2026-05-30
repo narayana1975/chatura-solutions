@@ -7,6 +7,8 @@ import { createClient } from '@/lib/supabase/client'
 import { Globe, GraduationCap, Briefcase, ArrowRight, Users } from 'lucide-react'
 import { DestinationCard } from '@/components/ui/card-21'
 import ConsultationTestimonials from '@/components/ui/consultation-testimonials'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function EducationalConsultation() {
   const [formData, setFormData] = useState({
@@ -86,39 +88,118 @@ export default function EducationalConsultation() {
     }
   }
 
+  const handleEnquireClick = () => {
+    const formSection = document.querySelector('[data-consultation-form]')
+    formSection?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Header />
 
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 text-balance">
-            Expert Guidance for Higher Education
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            Personalized consultation to help you select the right university and prepare for admission. Our experts have helped hundreds of students get into their dream institutions.
+      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Subheading */}
+          <p className="text-center text-black text-2xl md:text-3xl font-bold mb-4">
+            Find your perfect university
           </p>
+
+          {/* Main Heading */}
+          <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
+            Get <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Expert Guidance</span> for Higher Education
+          </h1>
+
+          {/* Description */}
+          <p className="text-center max-w-3xl mx-auto text-black text-lg md:text-xl mb-12 leading-relaxed">
+            Choosing the right university is one of the most important decisions of your life. Our expert consultants have guided <span className="font-semibold">hundreds of students to their dream universities</span> across the globe.
+          </p>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ml-12">
+            {/* Left Column */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-blue-600 mb-6">
+                Personalized consultation for your educational journey
+              </h2>
+              <p className="text-black text-lg mb-8 leading-relaxed">
+                Our experienced counselors provide one-on-one guidance to help you select universities that match your academic profile, career goals, and personal preferences. From shortlisting options to acing admission interviews, we&apos;ve got you covered.
+              </p>
+              <div>
+                <button
+                  onClick={handleEnquireClick}
+                  className="inline-flex items-center justify-center border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
+                >
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column - Image Only */}
+            <div className="flex justify-center">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/bragging_img1-osXnCBdSr58avM2muxPMhkWJbb6wXi.webp"
+                alt="Student with notebook and educational materials"
+                width={450}
+                height={630}
+                className="rounded-lg object-cover"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Services */}
-      <section className="bg-card border-y border-border py-16 md:py-24">
+      <section className="bg-gradient-to-b from-background to-background/50 py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Our Consultation Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <div key={index} className="bg-background border border-border rounded-lg p-8 hover:shadow-lg transition-shadow">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center mb-6">
-                    <Icon className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Our Consultation Services</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Comprehensive support at every step of your higher education journey</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                title: "University Selection",
+                description: "Expert guidance in selecting universities that match your academic profile, career goals, and personal preferences.",
+                image: "/images/university-selection.png",
+              },
+              {
+                title: "Application Support",
+                description: "Comprehensive assistance with essay writing, application forms, and strategic positioning for top universities.",
+                image: "/images/application-support.png",
+              },
+              {
+                title: "Interview Coaching",
+                description: "Personalized interview preparation to help you ace admission interviews and stand out to admissions committees.",
+                image: "/images/interview-coaching.png",
+              }
+            ].map((service, index) => (
+              <div 
+                key={index} 
+                className="group bg-card rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Image Container */}
+                <div className="relative h-56 mb-6 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-              )
-            })}
+
+                {/* Content Container */}
+                <div className="px-6 pb-6">
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="text-3xl">{service.icon}</span>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground text-base leading-relaxed mb-4">{service.description}</p>
+                  
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -137,7 +218,7 @@ export default function EducationalConsultation() {
             <DestinationCard
               imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Front_view_of_Statue_of_Liberty_%28cropped%29.jpg/960px-Front_view_of_Statue_of_Liberty_%28cropped%29.jpg"
               location="United States"
-              flag="🇺🇸"
+              flag="🇺��"
               stats="1,250+ Students"
               href="#"
               themeColor="210 100% 50%"
@@ -200,7 +281,7 @@ export default function EducationalConsultation() {
       <ConsultationTestimonials />
 
       {/* Consultation Form */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32" data-consultation-form>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Schedule Your Consultation</h2>
         <p className="text-center text-muted-foreground mb-12">
           Fill out the form below and our team will get in touch within 24 hours to discuss your educational goals.
