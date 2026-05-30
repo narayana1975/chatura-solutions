@@ -1,76 +1,48 @@
-# Database Connection Setup Guide
+# Database Setup Guide for Chatura Solutions
 
-This guide explains how to connect your forms to a database using environment variables.
+This guide walks you through setting up your Supabase database and configuring environment variables for the contact forms and consultation requests.
 
-## Overview
+## Quick Start
 
-Your forms now use API routes to submit data to a database instead of direct client-side connections. This provides better security and control over your database operations.
-
-## Environment Variables
-
-You need to set up the following environment variables in your `.env.local` file:
-
-### Required Variables
-
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
-```
-
-**Important:** If you have Row Level Security (RLS) enabled on your database tables, you MUST add the `SUPABASE_SERVICE_ROLE_KEY`. This key is used for server-side API operations and bypasses RLS policies.
-
-- `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are public variables (safe to expose in the browser)
-- `SUPABASE_SERVICE_ROLE_KEY` is private and must never be exposed to the client
-
-## How to Get Your Supabase Credentials
-
+### 1. Get Your Supabase Credentials
 1. Go to [Supabase Dashboard](https://supabase.com/dashboard)
 2. Select your project
-3. Click **Settings** → **API**
-4. Copy the following values:
-   - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
-   - **anon public** → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - **service_role secret** → `SUPABASE_SERVICE_ROLE_KEY` (keep this secret!)
+3. Navigate to **Settings** → **API**
+4. Copy these values:
+   - **Project URL** (copy the entire URL, e.g., `https://your-project.supabase.co`)
+   - **anon public** key (under "Project API keys")
+   - **service_role secret** key (under "Project API keys" - scroll down, keep this SECRET!)
 
-### Getting the Service Role Key
-
-The Service Role Key is found in the same API settings page, but note:
-- It has elevated permissions and can bypass RLS policies
-- NEVER expose it to the browser or client-side code
-- Store it only in `.env.local` (which is in .gitignore)
-
-## Setup Steps
-
-### 1. Create `.env.local` file
+### 2. Create `.env.local` File
 ```bash
+# From your project root directory
 cp .env.example .env.local
 ```
 
-### 2. Add your Supabase credentials
-Edit `.env.local` and replace the placeholder values with your actual Supabase credentials:
+### 3. Add Your Credentials to `.env.local`
+Edit `.env.local` and replace the placeholder values:
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://your-actual-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-actual-key-here
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-actual-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-actual-service-role-key-here
 ```
 
-### 3. Ensure Database Tables Exist
-Your Supabase project should have these tables:
+### 4. Create Database Tables
+Copy and run the following SQL in your Supabase SQL Editor (go to **SQL Editor** in the left sidebar):
 
-#### contact_inquiries
 ```sql
+-- Create contact_inquiries table
 CREATE TABLE contact_inquiries (
   id BIGSERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   email TEXT NOT NULL,
+  phone TEXT NOT NULL,
   subject TEXT NOT NULL,
   message TEXT NOT NULL,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
-```
 
-#### consultations
-```sql
+-- Create consultations table
 CREATE TABLE consultations (
   id BIGSERIAL PRIMARY KEY,
   name TEXT NOT NULL,
@@ -83,8 +55,7 @@ CREATE TABLE consultations (
 );
 ```
 
-### 4. Test Your Connection
-Start your development server:
+### 5. Test Your Setup
 ```bash
 npm run dev
 # or
@@ -93,96 +64,234 @@ yarn dev
 pnpm dev
 ```
 
-Then test the forms:
-- Contact form: http://localhost:3000/contact
-- Educational Consultation: http://localhost:3000/educational-consultation
+Visit http://localhost:3000/contact and submit a test message. If successful, you'll see "Message sent successfully!"
 
-## API Routes
+---
 
-Your forms now submit to these API endpoints:
+## Environment Variables Explained
 
-- **POST `/api/contact`** - Submit contact inquiries
-- **POST `/api/consultation`** - Submit consultation requests
+### Public Variables (Safe to expose)
+- **NEXT_PUBLIC_SUPABASE_URL**: Your Supabase project URL
+  - Example: `https://abcdefg123.supabase.co`
+  - Location: Supabase Dashboard → Settings → API → Project URL
 
-### Request Format
+- **NEXT_PUBLIC_SUPABASE_ANON_KEY**: Anonymous key for client-side operations
+  - Location: Supabase Dashboard → Settings → API → Project API keys → anon public
 
-#### Contact Form
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "subject": "Subject line",
-  "message": "Message content"
-}
-```
+### Private Variable (KEEP SECRET!)
+- **SUPABASE_SERVICE_ROLE_KEY**: Admin key for server-side operations
+  - Location: Supabase Dashboard → Settings → API → Project API keys → service_role secret
+  - This key has elevated permissions and should NEVER be exposed to the client
+  - It's used by your API routes to bypass Row Level Security (RLS) policies
+  - NEVER commit this to git (already in `.gitignore`)
 
-#### Consultation Form
+---
+
+## Database Schema Details
+
+### contact_inquiries Table
+
+This table stores contact form submissions from your contact page.
+
+| Column | Type | Required | Notes |
+|--------|------|----------|-------|
+| id | BIGSERIAL | ✓ | Primary key, auto-increments |
+| name | TEXT | ✓ | User's full name |
+| email | TEXT | ✓ | User's email address |
+| phone | TEXT | ✓ | User's phone number |
+| subject | TEXT | ✓ | Subject of the inquiry |
+| message | TEXT | ✓ | Message content |
+| created_at | TIMESTAMP | ✓ | Auto-set to current timestamp |
+
+### consultations Table
+
+This table stores educational consultation requests.
+
+| Column | Type | Required | Notes |
+|--------|------|----------|-------|
+| id | BIGSERIAL | ✓ | Primary key, auto-increments |
+| name | TEXT | ✓ | User's full name |
+| email | TEXT | ✓ | User's email address |
+| phone | TEXT | ✓ | User's phone number |
+| target_country | TEXT | ✗ | Desired country for education |
+| target_university | TEXT | ✗ | Desired university name |
+| education_level | TEXT | ✓ | Current education level |
+| created_at | TIMESTAMP | ✓ | Auto-set to current timestamp |
+
+---
+
+## API Endpoints
+
+### POST /api/contact
+Submit a contact form inquiry.
+
+**Request body:**
 ```json
 {
   "name": "John Doe",
   "email": "john@example.com",
   "phone": "+1 (234) 567-8900",
-  "education_level": "bachelor",
-  "target_country": "USA",
-  "target_university": "Harvard"
+  "subject": "Question about services",
+  "message": "I would like to know more about..."
 }
 ```
 
-## Troubleshooting
+**Success response (201):**
+```json
+{
+  "success": true,
+  "message": "Contact inquiry submitted successfully",
+  "data": [{"id": 1, "name": "John Doe", ...}]
+}
+```
 
-### Error: "Missing Supabase environment variables"
-- Ensure your `.env.local` file has both `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- Check that the values are not empty or contain placeholder text
-- Restart your development server after adding environment variables
+**Error response (400/500):**
+```json
+{
+  "error": "Descriptive error message"
+}
+```
 
-### Error: "Failed to save contact inquiry" or "Failed to save consultation request"
-This typically means your RLS policies are blocking the insert. Solutions:
+### POST /api/consultation
+Submit an educational consultation request.
 
-**Option 1: Add the Service Role Key (Recommended for secure setup)**
-1. Go to Supabase Dashboard → Settings → API
-2. Copy the **service_role secret** key
-3. Add it to your `.env.local`:
-   ```
-   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
-   ```
-4. Restart your development server
-5. Try submitting the form again
+**Request body:**
+```json
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "phone": "+1 (345) 678-9012",
+  "education_level": "bachelor",
+  "target_country": "USA",
+  "target_university": "MIT"
+}
+```
 
-**Option 2: Disable RLS on the tables (Less secure, for testing only)**
+**Success response (201):**
+```json
+{
+  "success": true,
+  "message": "Consultation request submitted successfully",
+  "data": [{"id": 1, "name": "Jane Doe", ...}]
+}
+```
+
+---
+
+## Row Level Security (RLS)
+
+Your database uses Row Level Security (RLS) to protect your data. Here's what you need to know:
+
+### Why Service Role Key is Required
+- The anonymous key (`NEXT_PUBLIC_SUPABASE_ANON_KEY`) cannot bypass RLS policies
+- Your API routes use the service role key to securely insert data while enforcing RLS on reads
+- This provides a balance between security and functionality
+
+### If RLS is Causing Issues
+If you get "Failed to save contact inquiry" errors:
+
+**Option 1: Ensure Service Role Key is Added (Recommended)**
+```
+SUPABASE_SERVICE_ROLE_KEY=your-actual-service-role-key-here
+```
+Then restart your dev server.
+
+**Option 2: Disable RLS (Development Only)**
 In Supabase SQL Editor, run:
 ```sql
--- Only for development/testing!
+-- WARNING: Only for development/testing!
 ALTER TABLE contact_inquiries DISABLE ROW LEVEL SECURITY;
 ALTER TABLE consultations DISABLE ROW LEVEL SECURITY;
 ```
 
-**Option 3: Create RLS policies that allow anonymous inserts**
+**Option 3: Create RLS Policies for Anonymous Access**
 In Supabase SQL Editor, run:
 ```sql
--- Allow anonymous users to insert
+-- Allow anonymous users to insert into contact_inquiries
 CREATE POLICY "Allow anonymous inserts" ON contact_inquiries
   FOR INSERT WITH CHECK (true);
 
+-- Allow anonymous users to insert into consultations
 CREATE POLICY "Allow anonymous inserts" ON consultations
   FOR INSERT WITH CHECK (true);
 ```
 
-### CORS Issues
-If you see CORS errors, make sure your Supabase project allows requests from your domain.
+---
 
-### Error: "The contact_inquiries table does not exist"
-1. Create the tables using the SQL provided in this guide (see "Ensure Database Tables Exist" section)
-2. Or copy and run the SQL in your Supabase SQL Editor
+## Troubleshooting
 
-## Security Notes
+### ❌ Error: "Missing Supabase environment variables"
+**Cause:** `.env.local` is missing or incomplete
 
-- `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are public and safe to expose
-- Never commit your `.env.local` file to git (it's in `.gitignore`)
-- For sensitive operations, use the Service Role Key only on the server side
-- Consider enabling Row Level Security (RLS) on your Supabase tables for added security
+**Fix:**
+1. Create `.env.local`: `cp .env.example .env.local`
+2. Add your actual Supabase credentials
+3. Restart dev server: `npm run dev`
 
-## Additional Resources
+### ❌ Error: "Failed to save contact inquiry" or "Failed to save consultation request"
+**Cause:** RLS policy is blocking the insert, or service role key is missing
+
+**Fix:**
+1. Verify `SUPABASE_SERVICE_ROLE_KEY` is in `.env.local`
+2. Verify the value is correct (from Supabase Dashboard → Settings → API)
+3. Restart dev server
+4. If still failing, check Supabase logs: **Logs** → **Database** in the sidebar
+
+### ❌ Error: "The contact_inquiries table does not exist"
+**Cause:** Tables haven't been created in Supabase
+
+**Fix:**
+1. Go to Supabase Dashboard → **SQL Editor**
+2. Click **New Query**
+3. Copy and paste the SQL from "Create Database Tables" section
+4. Click **Run**
+
+### ❌ Error: "Please provide a valid phone number"
+**Cause:** Phone number format doesn't match validation
+
+**Fix:**
+- Use formats like: `+1 (234) 567-8900`, `(234) 567-8900`, `+1-234-567-8900`, `1234567890`
+- Avoid special characters except: `+ - ( )`
+
+### ❌ Error: "Please provide a valid email address"
+**Cause:** Email format is invalid
+
+**Fix:**
+- Use standard email format: `name@domain.com`
+
+### ❌ CORS Errors in Browser Console
+**Cause:** Browser blocking requests to Supabase
+
+**Fix:**
+1. Supabase handles CORS automatically for its domains
+2. If you're getting CORS errors, verify your Supabase URL is correct
+3. Check browser console for the exact error
+
+---
+
+## Security Checklist
+
+- [ ] `.env.local` is in `.gitignore` (should already be set up)
+- [ ] `SUPABASE_SERVICE_ROLE_KEY` is NEVER hardcoded in any file
+- [ ] `SUPABASE_SERVICE_ROLE_KEY` is ONLY in `.env.local` (not `.env.example`)
+- [ ] You're using RLS on your database tables
+- [ ] You've enabled HTTPS for your production domain
+
+---
+
+## Useful Supabase Links
 
 - [Supabase Documentation](https://supabase.com/docs)
-- [Next.js Environment Variables](https://nextjs.org/docs/basic-features/environment-variables)
-- [API Routes in Next.js](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+- [Supabase SQL Editor](https://supabase.com/dashboard/project/_/sql/new)
+- [Environment Variables Best Practices](https://nextjs.org/docs/basic-features/environment-variables)
+- [Row Level Security Guide](https://supabase.com/docs/guides/auth/row-level-security)
+
+---
+
+## Next Steps
+
+Once your database is set up:
+1. Test both forms at `/contact` and `/educational-consultation`
+2. Verify data appears in Supabase dashboard under **Table Editor**
+3. Set up email notifications if desired (in Supabase)
+4. Deploy to production with the same environment variables set in Vercel

@@ -4,12 +4,12 @@ import { getSupabaseClient } from '@/lib/db'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { name, email, subject, message } = body
+    const { name, email, phone, subject, message } = body
 
     // Validate required fields
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !phone || !subject || !message) {
       return NextResponse.json(
-        { error: 'Missing required fields: name, email, subject, and message are all required' },
+        { error: 'Missing required fields: name, email, phone, subject, and message are all required' },
         { status: 400 }
       )
     }
@@ -19,6 +19,15 @@ export async function POST(request: NextRequest) {
     if (!emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'Please provide a valid email address' },
+        { status: 400 }
+      )
+    }
+
+    // Validate phone format (basic check)
+    const phoneRegex = /^[\d\s\-\+\(\)]+$/
+    if (!phoneRegex.test(phone)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid phone number' },
         { status: 400 }
       )
     }
@@ -33,6 +42,7 @@ export async function POST(request: NextRequest) {
         {
           name: name.trim(),
           email: email.trim(),
+          phone: phone.trim(),
           subject: subject.trim(),
           message: message.trim(),
         },
