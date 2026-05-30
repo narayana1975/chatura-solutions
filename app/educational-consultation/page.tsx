@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { Globe, GraduationCap, Briefcase, ArrowRight, Users } from 'lucide-react'
 import { DestinationCard } from '@/components/ui/card-21'
+import ConsultationTestimonials from '@/components/ui/consultation-testimonials'
 
 export default function EducationalConsultation() {
   const [formData, setFormData] = useState({
@@ -194,6 +195,9 @@ export default function EducationalConsultation() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <ConsultationTestimonials />
 
       {/* Consultation Form */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
