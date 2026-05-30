@@ -9,6 +9,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: '',
   })
@@ -47,6 +48,7 @@ export default function Contact() {
       setFormData({
         name: '',
         email: '',
+        phone: '',
         subject: '',
         message: '',
       })
@@ -151,6 +153,19 @@ export default function Contact() {
                   placeholder="john@example.com"
                 />
               </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                placeholder="+1 (234) 567-8900"
+              />
             </div>
 
             <div>
