@@ -15,9 +15,13 @@ You need to set up the following environment variables in your `.env.local` file
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
 ```
 
-These are public variables (prefixed with `NEXT_PUBLIC_`) that are safe to expose in the browser.
+**Important:** If you have Row Level Security (RLS) enabled on your database tables, you MUST add the `SUPABASE_SERVICE_ROLE_KEY`. This key is used for server-side API operations and bypasses RLS policies.
+
+- `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are public variables (safe to expose in the browser)
+- `SUPABASE_SERVICE_ROLE_KEY` is private and must never be exposed to the client
 
 ## How to Get Your Supabase Credentials
 
@@ -27,6 +31,14 @@ These are public variables (prefixed with `NEXT_PUBLIC_`) that are safe to expos
 4. Copy the following values:
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
    - **anon public** → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - **service_role secret** → `SUPABASE_SERVICE_ROLE_KEY` (keep this secret!)
+
+### Getting the Service Role Key
+
+The Service Role Key is found in the same API settings page, but note:
+- It has elevated permissions and can bypass RLS policies
+- NEVER expose it to the browser or client-side code
+- Store it only in `.env.local` (which is in .gitignore)
 
 ## Setup Steps
 
@@ -123,14 +135,44 @@ Your forms now submit to these API endpoints:
 - Check that the values are not empty or contain placeholder text
 - Restart your development server after adding environment variables
 
-### Error: "Failed to submit contact form" or "Failed to submit. Please try again"
-1. Check browser console for detailed error messages
-2. Verify the database tables exist in your Supabase project
-3. Check Supabase dashboard → Logs to see any database errors
-4. Ensure your Supabase credentials are correct
+### Error: "Failed to save contact inquiry" or "Failed to save consultation request"
+This typically means your RLS policies are blocking the insert. Solutions:
+
+**Option 1: Add the Service Role Key (Recommended for secure setup)**
+1. Go to Supabase Dashboard → Settings → API
+2. Copy the **service_role secret** key
+3. Add it to your `.env.local`:
+   ```
+   SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here
+   ```
+4. Restart your development server
+5. Try submitting the form again
+
+**Option 2: Disable RLS on the tables (Less secure, for testing only)**
+In Supabase SQL Editor, run:
+```sql
+-- Only for development/testing!
+ALTER TABLE contact_inquiries DISABLE ROW LEVEL SECURITY;
+ALTER TABLE consultations DISABLE ROW LEVEL SECURITY;
+```
+
+**Option 3: Create RLS policies that allow anonymous inserts**
+In Supabase SQL Editor, run:
+```sql
+-- Allow anonymous users to insert
+CREATE POLICY "Allow anonymous inserts" ON contact_inquiries
+  FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Allow anonymous inserts" ON consultations
+  FOR INSERT WITH CHECK (true);
+```
 
 ### CORS Issues
 If you see CORS errors, make sure your Supabase project allows requests from your domain.
+
+### Error: "The contact_inquiries table does not exist"
+1. Create the tables using the SQL provided in this guide (see "Ensure Database Tables Exist" section)
+2. Or copy and run the SQL in your Supabase SQL Editor
 
 ## Security Notes
 
