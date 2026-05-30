@@ -1,0 +1,122 @@
+{
+  "availableBatches": [
+    {
+      "id": "batch-1",
+      "courseTitle": "Complete Interview Preparation",
+      "startDate": "2024-02-15",
+      "endDate": "2024-04-15",
+      "duration": "8 weeks",
+      "schedule": "Mon & Wed, 7:00 PM - 9:00 PM IST",
+      "instructor": "Sarah Johnson",
+      "seats": 15,
+      "seatsRemaining": 5,
+      "level": "Intermediate",
+      "description": "Master technical and behavioral interviews with hands-on practice.",
+      "topics": ["Data Structures", "Algorithms", "System Design", "Behavioral Questions", "Mock Interviews"],
+      "price": "₹4,999"
+    },
+    {
+      "id": "batch-2",
+      "courseTitle": "Advanced Data Structures & Algorithms",
+      "startDate": "2024-02-20",
+      "endDate": "2024-05-20",
+      "duration": "12 weeks",
+      "schedule": "Tue & Thu, 6:00 PM - 8:00 PM IST",
+      "instructor": "Michael Chen",
+      "seats": 20,
+      "seatsRemaining": 12,
+      "level": "Advanced",
+      "description": "Deep dive into complex algorithms and their real-world applications.",
+      "topics": ["Advanced DSA", "Competitive Programming", "Optimization", "Problem Solving"],
+      "price": "₹5,999"
+    },
+    {
+      "id": "batch-3",
+      "courseTitle": "Career Development & Soft Skills",
+      "startDate": "2024-02-25",
+      "endDate": "2024-03-25",
+      "duration": "4 weeks",
+      "schedule": "Sat & Sun, 10:00 AM - 12:00 PM IST",
+      "instructor": "Emily Rodriguez",
+      "seats": 25,
+      "seatsRemaining": 18,
+      "level": "Beginner",
+      "description": "Develop essential communication and leadership skills for career success.",
+      "topics": ["Communication", "Leadership", "Negotiation", "Networking", "Personal Branding"],
+      "price": "₹2,999"
+    },
+    {
+      "id": "batch-4",
+      "courseTitle": "System Design Masterclass",
+      "startDate": "2024-03-01",
+      "endDate": "2024-04-30",
+      "duration": "8 weeks",
+      "schedule": "Fri, 7:00 PM - 9:00 PM IST & Sat, 10:00 AM - 12:00 PM IST",
+      "instructor": "James Wilson",
+      "seats": 12,
+      "seatsRemaining": 3,
+      "level": "Advanced",
+      "description": "Learn to design scalable systems like industry experts.",
+      "topics": ["Database Design", "Scalability", "Load Balancing", "Caching", "Microservices"],
+      "price": "₹6,999"
+    }
+  ],
+  "previousBatches": [
+    {
+      "id": "prev-batch-1",
+      "courseTitle": "Complete Interview Preparation",
+      "startDate": "2024-01-15",
+      "endDate": "2024-03-15",
+      "duration": "8 weeks",
+      "instructor": "Sarah Johnson",
+      "studentCount": 18,
+      "successRate": 94,
+      "testimonials": [
+        {
+          "student": "Raj Kumar",
+          "rating": 5,
+          "feedback": "Got placement at Google with this course!"
+        },
+        {
+          "student": "Priya Singh",
+          "rating": 5,
+          "feedback": "Best investment for my career. Highly recommended!"
+        }
+      ]
+    },
+    {
+      "id": "prev-batch-2",
+      "courseTitle": "Advanced Data Structures & Algorithms",
+      "startDate": "2023-12-01",
+      "endDate": "2024-02-28",
+      "duration": "12 weeks",
+      "instructor": "Michael Chen",
+      "studentCount": 22,
+      "successRate": 91,
+      "testimonials": [
+        {
+          "student": "Arjun Patel",
+          "rating": 5,
+          "feedback": "Cleared coding rounds at all companies I interviewed!"
+        }
+      ]
+    },
+    {
+      "id": "prev-batch-3",
+      "courseTitle": "Career Development & Soft Skills",
+      "startDate": "2024-01-01",
+      "endDate": "2024-02-01",
+      "duration": "4 weeks",
+      "instructor": "Emily Rodriguez",
+      "studentCount": 25,
+      "successRate": 88,
+      "testimonials": [
+        {
+          "student": "Sneha Desai",
+          "rating": 5,
+          "feedback": "Amazing course! Really helped me prepare for interviews."
+        }
+      ]
+    }
+  ]
+}
