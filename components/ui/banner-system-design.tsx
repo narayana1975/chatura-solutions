@@ -122,9 +122,11 @@ function BannerSystemDesign() {
                     <span className="text-muted-foreground text-xs ml-1">s</span>
                   </span>
                 </div>
-                <Button size="sm" className="text-sm bg-blue-600 hover:bg-blue-700 whitespace-nowrap">
-                  {bannerData.ctaText}
-                </Button>
+                <a href={bannerData.ctaLink}>
+                  <Button size="sm" className="text-sm bg-blue-600 hover:bg-blue-700 whitespace-nowrap">
+                    {bannerData.ctaText}
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
