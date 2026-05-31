@@ -7,6 +7,23 @@ import { AnimatedTestimonials } from '@/components/animated-testimonials'
 import { BannerSystemDesign } from '@/components/ui/banner-system-design'
 import Link from 'next/link'
 import { ArrowRight, Users, Briefcase, Link as LinkIcon } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Chatura Solutions | Upskilling Courses, Mock Interviews & Educational Consultation',
+  description: 'Transform your career with expert upskilling courses, real mock interviews, and personalized educational consultation. Join 10,000+ successful students.',
+  keywords: 'upskilling courses, mock interviews, educational consultation, career advancement, interview preparation, university selection',
+  openGraph: {
+    title: 'Chatura Solutions - Career Transformation Platform',
+    description: 'Expert courses, mock interviews, and educational guidance for career success',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chatura Solutions',
+    description: 'Career transformation through expert courses and guidance',
+  },
+}
 
 export default function Home() {
   const servicesGallery = [

@@ -120,14 +120,27 @@ export default function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Send Us a Message</h2>
         <p className="text-center text-muted-foreground mb-12">
           Fill out the form below and we&apos;ll get back to you as soon as possible.
         </p>
 
-        <div className="bg-card border border-border rounded-lg p-8 md:p-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Map Container */}
+          <div className="order-2 lg:order-1 bg-card border border-border rounded-lg overflow-hidden flex flex-col">
+            <div className="flex-1 min-h-96 lg:min-h-auto bg-muted flex items-center justify-center">
+              <div className="text-center text-muted-foreground p-8">
+                <MapPin size={48} className="mx-auto mb-4 opacity-50" />
+                <p className="text-lg font-semibold mb-2">Office Location</p>
+                <p className="text-sm max-w-xs">1st Cross Road, C Sector V.G.Rao Nagar, Katpadi, Vellore, Tamil Nadu 632007, INDIA</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Container */}
+          <div className="order-1 lg:order-2 bg-card border border-border rounded-lg p-8 md:p-12 flex flex-col">
+            <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col justify-between">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
@@ -214,10 +227,11 @@ export default function Contact() {
               {isLoading ? 'Sending...' : 'Send Message'} {!isLoading && <ArrowRight size={20} />}
             </button>
 
-            <p className="text-xs text-muted-foreground text-center">
-              We respect your privacy. Your information is secure and will only be used to respond to your inquiry.
-            </p>
-          </form>
+              <p className="text-xs text-muted-foreground text-center">
+                We respect your privacy. Your information is secure and will only be used to respond to your inquiry.
+              </p>
+            </form>
+          </div>
         </div>
       </section>
 

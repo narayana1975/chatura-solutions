@@ -1,0 +1,59 @@
+{
+  "name": "Chatura Solutions",
+  "description": "Expert upskilling courses, mock interviews, and educational consultation services for career advancement",
+  "url": "https://chaturasolutions.com",
+  "pages": [
+    {
+      "title": "Home",
+      "path": "/",
+      "description": "Transform your career with expert upskilling courses, real mock interviews, and personalized educational consultation"
+    },
+    {
+      "title": "Upskilling Courses",
+      "path": "/courses",
+      "description": "Expert-led upskilling courses designed to enhance your professional skills and career prospects"
+    },
+    {
+      "title": "Mock Interview Practice",
+      "path": "/mock-interview",
+      "description": "Practice real interview questions with industry experts and get personalized feedback"
+    },
+    {
+      "title": "Educational Consultation",
+      "path": "/educational-consultation",
+      "description": "Expert guidance for university selection, application support, and career path planning"
+    },
+    {
+      "title": "Contact Us",
+      "path": "/contact",
+      "description": "Get in touch with our team for inquiries about our services"
+    }
+  ],
+  "services": [
+    {
+      "name": "Upskilling Courses",
+      "description": "Comprehensive courses designed to enhance professional skills and expertise with industry experts"
+    },
+    {
+      "name": "Mock Interviews",
+      "description": "Practice with industry experts and gain confidence for actual interviews with real-time feedback"
+    },
+    {
+      "name": "Educational Consultation",
+      "description": "Personalized guidance for higher education selection and career path planning"
+    }
+  ],
+  "contact": {
+    "email": "info@chaturasolutions.com",
+    "address": "1st Cross Road, C Sector V.G.Rao Nagar, Katpadi, Vellore, Tamil Nadu 632007, INDIA",
+    "social": {
+      "linkedin": "https://www.linkedin.com/company/chaturasolutions/",
+      "instagram": "https://www.instagram.com/chaturasolutions/"
+    }
+  },
+  "statistics": {
+    "students": "10,000+",
+    "placements": "8,500+",
+    "success_rate": "85%"
+  }
+}

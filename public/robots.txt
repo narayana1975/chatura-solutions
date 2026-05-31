@@ -1,12 +1,27 @@
+# Allow all bots to crawl and index
 User-agent: *
 Allow: /
+
+# Disallow admin and API routes
 Disallow: /admin/
 Disallow: /api/
+Disallow: /private/
 
-Sitemap: https://example.com/sitemap.xml
+# Sitemap location
+Sitemap: https://chaturasolutions.com/sitemap.xml
 
+# Allow specific bots
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Crawl delay
+Crawl-delay: 1
