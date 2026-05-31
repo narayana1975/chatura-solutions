@@ -240,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary py-12 md:py-16">
+      <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-primary py-12 md:py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">Ready to Transform Your Career?</h2>
           <p className="text-primary-foreground/90 text-base md:text-lg mb-6">Join thousands of professionals who have advanced their careers with Chatura Solutions.</p>
