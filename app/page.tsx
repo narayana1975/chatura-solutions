@@ -281,26 +281,37 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-primary py-12 md:py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">Ready to Transform Your Career?</h2>
-          <p className="text-primary-foreground/90 text-base md:text-lg mb-6">Join thousands of professionals who have advanced their careers with Chatura Solutions.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link
-              href="/educational-consultation"
-              className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity text-sm md:text-base"
-            >
-              Schedule Consultation <ArrowRight size={18} />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground text-primary-foreground px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors text-sm md:text-base"
-            >
-              Get in Touch
-            </Link>
-          </div>
+      <section className="py-12 md:py-16">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-primary rounded-3xl py-12 md:py-16 px-6 md:px-10">
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+          Ready to Transform Your Career?
+        </h2>
+
+        <p className="text-primary-foreground/90 text-base md:text-lg mb-6">
+          Join thousands of professionals who have advanced their careers with Chatura Solutions.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/educational-consultation"
+            className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+          >
+            Schedule Consultation <ArrowRight size={18} />
+          </Link>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground text-primary-foreground px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors"
+          >
+            Get in Touch
+          </Link>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Testimonials Section */}
       <AnimatedTestimonials
