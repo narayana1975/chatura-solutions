@@ -5,6 +5,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel'
+import { useEffect, useState } from 'react'
 
 interface GalleryItem {
   id: string
@@ -66,6 +67,45 @@ const Gallery6 = ({
     },
   ],
 }: Gallery6Props) => {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const ServiceCard = ({ item }: { item: GalleryItem }) => (
+    <a
+      href={item.url}
+      className="group flex flex-col justify-between"
+    >
+      <div>
+        <div className="flex aspect-[3/2] overflow-clip rounded-xl">
+          <div className="flex-1">
+            <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="mb-2 line-clamp-3 break-words pt-3 sm:pt-4 text-base sm:text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+        {item.title}
+      </div>
+      <div className="mb-4 sm:mb-8 line-clamp-2 text-xs sm:text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
+        {item.summary}
+      </div>
+    </a>
+  )
+
   return (
     <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -76,47 +116,32 @@ const Gallery6 = ({
         </div>
       </div>
       <div className="flex justify-center px-4 sm:px-6 lg:px-8">
-        <Carousel
-          opts={{
-            breakpoints: {
-              '(max-width: 640px)': {
-                dragFree: true,
-              },
-            },
-          }}
-          className="w-full max-w-7xl"
-        >
-          <CarouselContent className="flex gap-2 sm:gap-4 md:gap-6">
+        {isMobile ? (
+          <div className="w-full max-w-7xl grid grid-cols-1 gap-4 sm:gap-6">
             {items.map((item) => (
-              <CarouselItem key={item.id} className="basis-full sm:basis-1/2 lg:basis-1/3 pl-0">
-                <a
-                  href={item.url}
-                  className="group flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex aspect-[3/2] overflow-clip rounded-xl">
-                      <div className="flex-1">
-                        <div className="relative h-full w-full origin-bottom transition duration-300 group-hover:scale-105">
-                          <img
-                            src={item.image}
-                            alt={item.title}
-                            className="h-full w-full object-cover object-center"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-2 line-clamp-3 break-words pt-3 sm:pt-4 text-base sm:text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
-                    {item.title}
-                  </div>
-                  <div className="mb-4 sm:mb-8 line-clamp-2 text-xs sm:text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
-                    {item.summary}
-                  </div>
-                </a>
-              </CarouselItem>
+              <ServiceCard key={item.id} item={item} />
             ))}
-          </CarouselContent>
-        </Carousel>
+          </div>
+        ) : (
+          <Carousel
+            opts={{
+              breakpoints: {
+                '(max-width: 640px)': {
+                  dragFree: true,
+                },
+              },
+            }}
+            className="w-full max-w-7xl"
+          >
+            <CarouselContent className="flex gap-2 sm:gap-4 md:gap-6">
+              {items.map((item) => (
+                <CarouselItem key={item.id} className="basis-full sm:basis-1/2 lg:basis-1/3 pl-0">
+                  <ServiceCard item={item} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        )}
       </div>
     </section>
   )
