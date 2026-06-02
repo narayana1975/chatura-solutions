@@ -190,7 +190,7 @@ export default function Home() {
            Upskill to Redefine <br />Your Career
           </>
         }
-        subtitle="Expert-led courses, mock interviews, career counselling, and educational consultation designed to help students and professionals achieve their goals."
+        subtitle="Expert-led learning, mock interviews, and career guidance to help you succeed."
         actions={[
           {
             text: 'Explore Courses',
