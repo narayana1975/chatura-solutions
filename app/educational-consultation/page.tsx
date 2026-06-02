@@ -172,8 +172,8 @@ export default function EducationalConsultation() {
                 image: "/images/interview-coaching.png",
               }
             ].map((service, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group bg-card rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
                 {/* Image Container */}
@@ -194,7 +194,7 @@ export default function EducationalConsultation() {
                     <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
                   </div>
                   <p className="text-muted-foreground text-base leading-relaxed mb-4">{service.description}</p>
-                  
+
                 </div>
               </div>
             ))}
@@ -275,8 +275,7 @@ export default function EducationalConsultation() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <ConsultationTestimonials />
+
 
       {/* Consultation Form */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32" data-consultation-form>
@@ -396,21 +395,39 @@ export default function EducationalConsultation() {
         </div>
       </section>
 
+            {/* Testimonials Section */}
+      <ConsultationTestimonials />
+      
       {/* CTA Section */}
-      <section className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] bg-gradient-to-r from-blue-600 to-blue-700 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Have Questions?</h2>
-          <p className="text-blue-100 text-lg mb-8">
-            Our experts are ready to help. Get in touch with us today.
-          </p>
-          <a
-            href="mailto:consultation@chaturasolutions.com"
-            className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-          >
-            Email Us <ArrowRight size={20} />
-          </a>
+
+
+      <section className="py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl py-12 md:py-16 px-6 md:px-10">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
+                Have Questions?
+              </h2>
+
+              <p className="text-primary-foreground/90 text-base md:text-lg mb-6">
+                Our experts are ready to help. Get in touch with us today.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-primary px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+                >
+                  Contact US <ArrowRight size={18} />
+                </Link>
+
+
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
 
       <Footer />
     </div>
