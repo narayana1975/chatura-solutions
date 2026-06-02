@@ -187,19 +187,19 @@ export default function Home() {
       <HeroSection
         title={
           <>
-            A new way to learn <br /> & get knowledge
+           Upskill to Redefine <br />Your Career
           </>
         }
-        subtitle="EduFlex is here for you with various courses & materials from skilled tutors all around the world."
+        subtitle="Expert-led courses, mock interviews, career counselling, and educational consultation designed to help students and professionals achieve their goals."
         actions={[
           {
-            text: 'Join the Class',
+            text: 'Explore Courses',
             href: '/courses',
             variant: 'default',
           },
           {
-            text: 'Learn more',
-            href: '#',
+            text: 'Book Consultation',
+            href: '/educational-consultation',
             variant: 'outline',
           },
         ]}
