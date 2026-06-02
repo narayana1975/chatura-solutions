@@ -49,7 +49,7 @@ export function Header() {
             href="/courses"
             className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
           >
-            JOIN TODAY
+            Register Now
           </Link>
         </div>
 
