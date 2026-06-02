@@ -193,13 +193,13 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-4">Our Mission</h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                To empower students and professionals worldwide by providing high-quality educational resources, expert guidance, and mock interview practice that bridge the gap between academic learning and industry requirements.
+                Chatura Solutions LLP is dedicated to transforming education through cutting-edge technology. We strive to make learning more accessible, engaging, and effective by leveraging AI, machine learning, and advanced analytics to create personalized educational experiences.
               </p>
             </div>
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-4">Our Vision</h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                To become the leading EdTech platform trusted by students and professionals for career development, recognized for our innovative approach to education and commitment to individual success.
+                To be the leading provider of innovative educational technology solutions that empower learners and educators worldwide, fostering a more inclusive and effective learning environment..
               </p>
             </div>
           </div>
