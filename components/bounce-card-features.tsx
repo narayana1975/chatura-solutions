@@ -53,6 +53,14 @@ export const BouncyCardsFeatures = ({ features }: { features: BounceCardFeatureP
             </span>
           </div>
         </BounceCard>
+        <BounceCard className="col-span-12 md:col-span-12">
+          <CardTitle>{features[4]?.title}</CardTitle>
+          <div className={`absolute bottom-0 left-4 right-4 top-32 translate-y-8 rounded-t-2xl ${features[4]?.gradient} p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg]`}>
+            <span className={`block text-center font-semibold ${features[4]?.textColor}`}>
+              {features[4]?.description}
+            </span>
+          </div>
+        </BounceCard>
       </div>
     </section>
   );

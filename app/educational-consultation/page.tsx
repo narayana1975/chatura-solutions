@@ -67,7 +67,7 @@ export default function EducationalConsultation() {
         throw new Error(data.error || 'Failed to submit form')
       }
 
-      setMessage('Consultation request submitted! We will contact you soon.')
+      setMessage('Consultation request submitted! Our executive will contact you Soon.')
       setFormData({
         name: '',
         email: '',
