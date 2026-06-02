@@ -119,7 +119,7 @@ export default function MockInterviewPage() {
           {
             title: 'Expert Interviewers',
             description: 'Learn from seasoned professionals who have conducted hundreds of interviews at FAANG companies. Get insider tips on what hiring managers really look for and how to stand out.',
-            link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
+            link: '/images/services/mock-interview.jpg',
             color: '#06b6d4',
           },
           {
@@ -131,13 +131,13 @@ export default function MockInterviewPage() {
           {
             title: 'Personalized Feedback',
             description: 'Receive comprehensive feedback after every session highlighting your strengths, areas for improvement, and specific actionable tips to boost your confidence.',
-            link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
+            link: '/images/services/consultation.jpg',
             color: '#06a8d4',
           },
           {
             title: 'Supportive Community',
             description: 'Connect with thousands of ambitious professionals preparing for their dream roles. Share experiences, learn from peers, and support each other on this journey.',
-            link: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&auto=format&fit=crop',
+            link: '/images/services/Supportive.png',
             color: '#0b7ab4',
           },
         ]}
