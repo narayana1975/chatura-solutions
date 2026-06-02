@@ -135,7 +135,7 @@ const Gallery6 = ({
           >
             <CarouselContent className="ml-0 flex gap-2 sm:gap-4 md:gap-6">
               {items.map((item) => (
-                <CarouselItem key={item.id} className="basis-full sm:basis-1/2 lg:basis-[32%] pl-0 overflow-visible">
+                <CarouselItem key={item.id} className="basis-full sm:basis-1/2 lg:basis-1/4 pl-0 overflow-visible">
                   <ServiceCard item={item} />
                 </CarouselItem>
               ))}
