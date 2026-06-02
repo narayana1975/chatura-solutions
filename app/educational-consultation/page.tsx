@@ -381,8 +381,6 @@ export default function EducationalConsultation() {
       <ConsultationTestimonials />
       
       {/* CTA Section */}
-
-
       <section className="py-12 md:py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl py-12 md:py-16 px-6 md:px-10">

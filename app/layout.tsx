@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import Script from 'next/script'
 import 'leaflet/dist/leaflet.css'
 import './globals.css'
 
@@ -77,6 +78,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="bg-background">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-HKD24SXDR4"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-HKD24SXDR4');
+            `,
+          }}
+        />
+      </head>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
