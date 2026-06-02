@@ -259,9 +259,14 @@ export default function Home() {
 
       {/* FAQs Section */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">Frequently Asked Questions</h2>
+        <div className="flex items-center justify-center gap-4 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center">Frequently Asked Questions</h2>
+          <Link href="/faq" className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors font-semibold whitespace-nowrap">
+            View All FAQs <ArrowRight size={20} />
+          </Link>
+        </div>
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqs.slice(0, 5).map((faq, index) => (
             <details
               key={index}
               className="group border border-border rounded-lg overflow-hidden hover:border-primary transition-colors"
