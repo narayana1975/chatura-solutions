@@ -67,28 +67,28 @@ const Gallery6 = ({
   ],
 }: Gallery6Props) => {
   return (
-    <section className="py-32">
-      <div className="container">
+    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex flex-col items-center justify-center text-center md:mb-14 lg:mb-16">
-          <h2 className="mb-3 text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
+          <h2 className="mb-3 text-2xl sm:text-3xl font-semibold md:mb-4 md:text-4xl lg:mb-6">
             {heading}
           </h2>
         </div>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8">
         <Carousel
           opts={{
             breakpoints: {
-              '(max-width: 768px)': {
+              '(max-width: 640px)': {
                 dragFree: true,
               },
             },
           }}
-          className="w-full max-w-6xl"
+          className="w-full max-w-7xl"
         >
-          <CarouselContent className="flex justify-center gap-4">
+          <CarouselContent className="flex gap-2 sm:gap-4 md:gap-6">
             {items.map((item) => (
-              <CarouselItem key={item.id} className="basis-full md:basis-1/2 lg:basis-1/3 pl-0">
+              <CarouselItem key={item.id} className="basis-full sm:basis-1/2 lg:basis-1/3 pl-0">
                 <a
                   href={item.url}
                   className="group flex flex-col justify-between"
@@ -106,10 +106,10 @@ const Gallery6 = ({
                       </div>
                     </div>
                   </div>
-                  <div className="mb-2 line-clamp-3 break-words pt-4 text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
+                  <div className="mb-2 line-clamp-3 break-words pt-3 sm:pt-4 text-base sm:text-lg font-medium md:mb-3 md:pt-4 md:text-xl lg:pt-4 lg:text-2xl">
                     {item.title}
                   </div>
-                  <div className="mb-8 line-clamp-2 text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
+                  <div className="mb-4 sm:mb-8 line-clamp-2 text-xs sm:text-sm text-muted-foreground md:mb-12 md:text-base lg:mb-9">
                     {item.summary}
                   </div>
                 </a>
