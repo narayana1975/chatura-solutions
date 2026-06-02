@@ -204,7 +204,7 @@ export default function Contact() {
                 href="tel:+1234567890"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                +1 (234) 567-890
+                 +91-416-4055743
               </a>
             </div>
 
