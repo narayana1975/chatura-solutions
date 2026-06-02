@@ -10,7 +10,7 @@ import { ArrowRight, Users, Briefcase, Link as LinkIcon } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Chatura Solutions | Upskilling Courses, Mock Interviews & Educational Consultation',
+  title: 'Chatura Solutions | Upskill to redefine your career',
   description: 'Transform your career with expert upskilling courses, real mock interviews, and personalized educational consultation. Join 10,000+ successful students.',
   keywords: 'upskilling courses, mock interviews, educational consultation, career advancement, interview preparation, university selection',
   openGraph: {
