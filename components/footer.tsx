@@ -19,7 +19,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-muted-foreground text-sm">
-              Empowering students and professionals with expert guidance for career advancement.
+               Upskill to Redefine Your Career.
             </p>
           </div>
 

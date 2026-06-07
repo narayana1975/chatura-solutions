@@ -14,7 +14,7 @@ export function Header() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/courses', label: 'Courses' },
+    { href: '/courses', label: 'Upskilling - Courses' },
     { href: '/mock-interview', label: 'Mock Interview' },
     { href: '/educational-consultation', label: 'Consultation' },
     { href: '/contact', label: 'Contact' },
