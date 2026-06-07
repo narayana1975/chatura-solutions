@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header Section */}
         <div className="mb-12">
@@ -171,7 +171,7 @@ export default function PrivacyPolicy() {
                 <strong>Phone:</strong> <a href="tel:+91-416-4055743" className="text-primary hover:underline">+91-416-4055743</a>
               </p>
               <p className="text-muted-foreground">
-                <strong>Email:</strong> <a href="mailto:info@chaturasolutions.com" className="text-primary hover:underline">info@chaturasolutions.com</a>
+                <strong>Email:</strong> <a href="mailto:support@chaturasolutions.com" className="text-primary hover:underline">support@chaturasolutions.com</a>
               </p>
               <p className="text-muted-foreground">
                 <strong>Website:</strong> <a href="https://chaturasolutions.com" className="text-primary hover:underline">chaturasolutions.com</a>

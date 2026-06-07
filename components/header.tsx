@@ -3,21 +3,37 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, ChevronDown } from 'lucide-react'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
+  const toggleServices = () => {
+    setServicesOpen(!servicesOpen)
+  }
+
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/courses', label: 'Courses' },
-    { href: '/mock-interview', label: 'Mock Interview' },
-    { href: '/educational-consultation', label: 'Consultation' },
+    { href: '/blogs', label: 'Blogs' },
     { href: '/contact', label: 'Contact' },
+  ]
+
+  const desktopNavOrder = [
+    navLinks[0], // Home
+    // Services dropdown goes here
+    navLinks[1], // Blogs
+    navLinks[2], // Contact
+  ]
+
+  const serviceLinks = [
+    { href: '/courses', label: 'Upskilling - Courses' },
+    { href: '/mock-interview', label: 'Mock Interview' },
+    { href: '/educational-consultation', label: 'Educational Consultation' },
   ]
 
   return (
@@ -36,15 +52,47 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {/* Home Link */}
+          <Link
+            href={desktopNavOrder[0].href}
+            className="text-foreground hover:text-primary transition-colors font-medium text-xl"
+          >
+            {desktopNavOrder[0].label}
+          </Link>
+          
+          {/* Services Dropdown */}
+          <div className="relative group">
+            <button
+              onClick={toggleServices}
+              className="flex items-center gap-1 text-foreground hover:text-primary transition-colors font-medium text-xl"
+            >
+              Services
+              <ChevronDown size={16} className="group-hover:rotate-180 transition-transform" />
+            </button>
+            <div className="absolute left-0 mt-0 w-56 bg-card border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 ">
+              {serviceLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block px-4 py-3 text-foreground hover:bg-accent first:rounded-t-lg last:rounded-b-lg transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Remaining Links */}
+          {desktopNavOrder.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-foreground hover:text-primary transition-colors font-medium text-xl"
             >
               {link.label}
             </Link>
           ))}
+
           <Link
             href="/courses"
             className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
@@ -77,12 +125,41 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Mobile Services Menu */}
+            <div>
+              <button
+                onClick={toggleServices}
+                className="w-full flex items-center justify-between px-4 py-2 rounded-lg text-foreground hover:bg-accent transition-colors font-medium"
+              >
+                Services
+                <ChevronDown size={16} className={`transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {servicesOpen && (
+                <div className="mt-2 space-y-2 pl-4">
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2 rounded-lg text-foreground hover:bg-accent transition-colors text-sm"
+                      onClick={() => {
+                        setIsOpen(false)
+                        setServicesOpen(false)
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <Link
-              href="/contact"
+              href="/courses"
               className="block w-full bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center"
               onClick={() => setIsOpen(false)}
             >
-              JOIN TODAY
+              Register Now
             </Link>
           </div>
         </div>

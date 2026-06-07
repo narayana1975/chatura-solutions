@@ -104,7 +104,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Validate form before submission
     if (!validateForm()) {
       setMessage('Please fix the errors above and try again')
@@ -191,7 +191,7 @@ export default function Contact() {
                 href="mailto:info@chaturasolutions.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                info@chaturasolutions.com
+                support@chaturasolutions.com
               </a>
             </div>
 
@@ -204,7 +204,7 @@ export default function Contact() {
                 href="tel:+1234567890"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
-                 +91-416-4055743
+                +91-416-4055743
               </a>
             </div>
 
@@ -235,131 +235,125 @@ export default function Contact() {
           {/* Form Container */}
           <div className="order-1 lg:order-2 bg-card border border-border rounded-lg p-8 md:p-12 flex flex-col">
             <form onSubmit={handleSubmit} className="space-y-6 flex-1 flex flex-col justify-between">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${errors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
+                      }`}
+                    placeholder="John Doe"
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                      <AlertCircle size={14} />
+                      {errors.name}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${errors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
+                      }`}
+                    placeholder="john@example.com"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                      <AlertCircle size={14} />
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${errors.phone ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
+                    }`}
+                  placeholder="+1 (234) 567-8900"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                    <AlertCircle size={14} />
+                    {errors.phone}
+                  </p>
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
                 <input
                   type="text"
-                  name="name"
-                  value={formData.name}
+                  name="subject"
+                  value={formData.subject}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${
-                    errors.name ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
-                  }`}
-                  placeholder="John Doe"
+                  className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${errors.subject ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
+                    }`}
+                  placeholder="How can we help?"
                 />
-                {errors.name && (
+                {errors.subject && (
                   <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                     <AlertCircle size={14} />
-                    {errors.name}
+                    {errors.subject}
                   </p>
                 )}
               </div>
+
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
+                <label className="block text-sm font-medium text-foreground mb-2">Message</label>
+                <textarea
+                  name="message"
+                  value={formData.message}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${
-                    errors.email ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
-                  }`}
-                  placeholder="john@example.com"
+                  rows={6}
+                  className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 resize-none transition-colors ${errors.message ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
+                    }`}
+                  placeholder="Tell us more about your inquiry..."
                 />
-                {errors.email && (
+                {errors.message && (
                   <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
                     <AlertCircle size={14} />
-                    {errors.email}
+                    {errors.message}
                   </p>
                 )}
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${
-                  errors.phone ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
-                }`}
-                placeholder="+1 (234) 567-8900"
-              />
-              {errors.phone && (
-                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                  <AlertCircle size={14} />
-                  {errors.phone}
-                </p>
+              {message && (
+                <div
+                  className={`p-4 rounded-lg text-sm flex items-center gap-3 ${messageType === 'success'
+                      ? 'bg-green-50 text-green-800 border border-green-200'
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}
+                >
+                  {messageType === 'success' ? (
+                    <CheckCircle size={18} className="flex-shrink-0" />
+                  ) : (
+                    <AlertCircle size={18} className="flex-shrink-0" />
+                  )}
+                  <span>{message}</span>
+                </div>
               )}
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Subject</label>
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 transition-colors ${
-                  errors.subject ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
-                }`}
-                placeholder="How can we help?"
-              />
-              {errors.subject && (
-                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                  <AlertCircle size={14} />
-                  {errors.subject}
-                </p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Message</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className={`w-full px-4 py-2 border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 resize-none transition-colors ${
-                  errors.message ? 'border-red-500 focus:ring-red-500/50' : 'border-border focus:ring-primary/50'
-                }`}
-                placeholder="Tell us more about your inquiry..."
-              />
-              {errors.message && (
-                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                  <AlertCircle size={14} />
-                  {errors.message}
-                </p>
-              )}
-            </div>
-
-            {message && (
-              <div
-                className={`p-4 rounded-lg text-sm flex items-center gap-3 ${
-                  messageType === 'success'
-                    ? 'bg-green-50 text-green-800 border border-green-200'
-                    : 'bg-red-50 text-red-800 border border-red-200'
-                }`}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                {messageType === 'success' ? (
-                  <CheckCircle size={18} className="flex-shrink-0" />
-                ) : (
-                  <AlertCircle size={18} className="flex-shrink-0" />
-                )}
-                <span>{message}</span>
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
-            >
-              {isLoading ? 'Sending...' : 'Send Message'} {!isLoading && <ArrowRight size={20} />}
-            </button>
+                {isLoading ? 'Sending...' : 'Send Message'} {!isLoading && <ArrowRight size={20} />}
+              </button>
 
               <p className="text-xs text-muted-foreground text-center">
                 We respect your privacy. Your information is secure and will only be used to respond to your inquiry.
