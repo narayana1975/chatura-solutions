@@ -2,13 +2,25 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Globe, GraduationCap, Briefcase, ArrowRight, Users, Code, Share2, Zap, BookOpen, Settings, BarChart3 } from 'lucide-react'
 import { DestinationCard } from '@/components/ui/card-21'
 import { WorkflowBuilderCard } from '@/components/ui/workflow-builder-card'
 import ConsultationTestimonials from '@/components/ui/consultation-testimonials'
 import Image from 'next/image'
 import Link from 'next/link'
+
+interface ConsultationService {
+  id: string
+  title: string
+  icon: string
+  color: string
+  iconColor: string
+  sections: Array<{
+    heading: string
+    description: string
+  }>
+}
 
 export default function EducationalConsultation() {
   const [formData, setFormData] = useState({
@@ -21,6 +33,7 @@ export default function EducationalConsultation() {
   })
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [consultationServices, setConsultationServices] = useState<ConsultationService[]>([])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -69,9 +82,34 @@ export default function EducationalConsultation() {
     }
   }
 
+  useEffect(() => {
+    const loadConsultationServices = async () => {
+      try {
+        const response = await fetch('/data/consultation-services.json')
+        const data = await response.json()
+        setConsultationServices(data.services)
+      } catch (error) {
+        console.error('Failed to load consultation services:', error)
+      }
+    }
+    loadConsultationServices()
+  }, [])
+
   const handleEnquireClick = () => {
     const formSection = document.querySelector('[data-consultation-form]')
     formSection?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const getIconComponent = (iconName: string) => {
+    const iconMap: Record<string, React.ReactNode> = {
+      GraduationCap: <GraduationCap className="text-blue-600" size={24} />,
+      BookOpen: <BookOpen className="text-green-600" size={24} />,
+      Users: <Users className="text-purple-600" size={24} />,
+      Settings: <Settings className="text-cyan-600" size={24} />,
+      BarChart3: <BarChart3 className="text-yellow-600" size={24} />,
+      Briefcase: <Briefcase className="text-red-600" size={24} />,
+    }
+    return iconMap[iconName] || null
   }
 
   return (
@@ -196,101 +234,27 @@ export default function EducationalConsultation() {
           <div className="mt-20 pt-12 border-t border-border">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-12 text-center">Types of Educational Consultation</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Academic Counselling */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-blue-100 rounded-lg">
-                    <GraduationCap className="text-blue-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Academic Counselling</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Student Guidance:</strong> Advising students on course selection, study techniques, and academic goals.</li>
-                      <li><strong>Career Planning:</strong> Helping students identify career interests, set career goals, and understand educational pathways related to their career aspirations.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* College Admissions Consulting */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-green-100 rounded-lg">
-                    <BookOpen className="text-green-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">College Admissions Consulting</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Application Assistance:</strong> Assisting students with college applications, including essay writing, interview preparation, and application strategies.</li>
-                      <li><strong>School Selection:</strong> Providing advice on choosing the right colleges or universities based on academic interests, career goals, and personal preferences.</li>
-                    </ul>
+              {consultationServices.map((service) => (
+                <div key={service.id} className="bg-card border border-border rounded-xl p-8">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`p-3 ${service.color} rounded-lg`}>
+                      {getIconComponent(service.icon)}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-bold text-foreground mb-3">{service.title}</h4>
+                      <div className="space-y-2">
+                        {service.sections.map((section, index) => (
+                          <div key={index}>
+                            <p className="text-sm text-muted-foreground">
+                              <strong>{section.heading}:</strong> {section.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Special Education Consulting */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-purple-100 rounded-lg">
-                    <Users className="text-purple-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Special Education Consulting</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Individualized Education Plans (IEPs):</strong> Helping create or review IEPs for students with special needs to ensure their educational requirements are met.</li>
-                      <li><strong>Support Services:</strong> Advising on appropriate resources, accommodations, and support services for students with disabilities.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Educational Technology Integration */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-cyan-100 rounded-lg">
-                    <Settings className="text-cyan-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Educational Technology Integration</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Technology Planning:</strong> Assisting schools or educational institutions in selecting and implementing technology tools and platforms.</li>
-                      <li><strong>Training:</strong> Providing training for teachers and administrators on how to effectively use educational technology.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Curriculum Development */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-yellow-100 rounded-lg">
-                    <BarChart3 className="text-yellow-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Curriculum Development</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Curriculum Design:</strong> Helping schools or educational institutions design and implement effective curricula that meet educational standards and student needs.</li>
-                      <li><strong>Assessment Strategies:</strong> Advising on assessment methods and tools to evaluate student progress and curriculum effectiveness.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Institutional Consulting */}
-              <div className="bg-card border border-border rounded-xl p-8">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="p-3 bg-red-100 rounded-lg">
-                    <Briefcase className="text-red-600" size={24} />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold text-foreground mb-2">Institutional Consulting</h4>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                      <li><strong>Strategic Planning:</strong> Helping educational institutions develop and implement strategic plans for growth and improvement.</li>
-                      <li><strong>Program Evaluation:</strong> Assessing the effectiveness of educational programs and suggesting improvements.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
