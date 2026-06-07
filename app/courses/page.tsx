@@ -135,7 +135,7 @@ export default function Courses() {
         </div>
       </section>
 
-      {/* Statistics Cards */}
+      {/* Statistics Cards
       {courses && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Platform Highlights</h2>
@@ -185,7 +185,7 @@ export default function Courses() {
             />
           </div>
         </section>
-      )}
+      )} */}
 
       {/* Tabs & Search */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" data-available-section>
@@ -212,7 +212,7 @@ export default function Courses() {
           >
             <span className="flex items-center gap-2">
               <Zap size={20} />
-              Available Batches ({filteredBatches.length})
+              Ongoing Batches ({filteredBatches.length})
             </span>
           </button>
           <button
