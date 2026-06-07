@@ -2,25 +2,12 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { useState, useEffect } from 'react'
-import { Globe, GraduationCap, Briefcase, ArrowRight, Users, Code, Share2, Zap, BookOpen, Settings, BarChart3 } from 'lucide-react'
+import { useState } from 'react'
+import { Globe, GraduationCap, Briefcase, ArrowRight, Users } from 'lucide-react'
 import { DestinationCard } from '@/components/ui/card-21'
-import { WorkflowBuilderCard } from '@/components/ui/workflow-builder-card'
 import ConsultationTestimonials from '@/components/ui/consultation-testimonials'
 import Image from 'next/image'
 import Link from 'next/link'
-
-interface ConsultationService {
-  id: string
-  title: string
-  icon: string
-  color: string
-  iconColor: string
-  sections: Array<{
-    heading: string
-    description: string
-  }>
-}
 
 export default function EducationalConsultation() {
   const [formData, setFormData] = useState({
@@ -33,7 +20,6 @@ export default function EducationalConsultation() {
   })
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
-  const [consultationServices, setConsultationServices] = useState<ConsultationService[]>([])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -82,34 +68,9 @@ export default function EducationalConsultation() {
     }
   }
 
-  useEffect(() => {
-    const loadConsultationServices = async () => {
-      try {
-        const response = await fetch('/data/consultation-services.json')
-        const data = await response.json()
-        setConsultationServices(data.services)
-      } catch (error) {
-        console.error('Failed to load consultation services:', error)
-      }
-    }
-    loadConsultationServices()
-  }, [])
-
   const handleEnquireClick = () => {
     const formSection = document.querySelector('[data-consultation-form]')
     formSection?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  const getIconComponent = (iconName: string) => {
-    const iconMap: Record<string, React.ReactNode> = {
-      GraduationCap: <GraduationCap className="text-blue-600" size={24} />,
-      BookOpen: <BookOpen className="text-green-600" size={24} />,
-      Users: <Users className="text-purple-600" size={24} />,
-      Settings: <Settings className="text-cyan-600" size={24} />,
-      BarChart3: <BarChart3 className="text-yellow-600" size={24} />,
-      Briefcase: <Briefcase className="text-red-600" size={24} />,
-    }
-    return iconMap[iconName] || null
   }
 
   return (
@@ -169,93 +130,56 @@ export default function EducationalConsultation() {
       </section>
 
       {/* Services */}
-      <section className="bg-gradient-to-b from-background to-background/50 py-20 md:py-20">
+      <section className="bg-gradient-to-b from-background to-background/50 py-20 md:py-11">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Our Consultation Services</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Comprehensive support at every step of your higher education journey</p>
           </div>
-          
-          {/* Main Service Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16">
-            <WorkflowBuilderCard
-              imageUrl="https://images.unsplash.com/photo-1516534775068-bb57fb94fe0a?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHw%3D&auto=format&fit=crop&q=80&w=900"
-              status="Active"
-              lastUpdated="5 days ago"
-              title="University Selection"
-              description="Expert guidance in selecting universities that match your academic profile, career goals, and personal preferences."
-              tags={["Academic", "Career Planning"]}
-              users={[
-                { src: "https://i.pravatar.cc/150?img=1", fallback: "U1" },
-                { src: "https://i.pravatar.cc/150?img=2", fallback: "U2" },
-                { src: "https://i.pravatar.cc/150?img=3", fallback: "U3" },
-              ]}
-              actions={[
-                { Icon: GraduationCap, bgColor: "bg-blue-500" },
-                { Icon: Globe, bgColor: "bg-cyan-500" },
-              ]}
-            />
-            <WorkflowBuilderCard
-              imageUrl="https://images.unsplash.com/photo-1434030216411-0b793313e4de?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHw%3D&auto=format&fit=crop&q=80&w=900"
-              status="Active"
-              lastUpdated="3 days ago"
-              title="Application Support"
-              description="Comprehensive assistance with essay writing, application forms, and strategic positioning for top universities."
-              tags={["Applications", "Essays"]}
-              users={[
-                { src: "https://i.pravatar.cc/150?img=4", fallback: "U4" },
-                { src: "https://i.pravatar.cc/150?img=5", fallback: "U5" },
-              ]}
-              actions={[
-                { Icon: Code, bgColor: "bg-green-500" },
-                { Icon: Share2, bgColor: "bg-purple-500" },
-              ]}
-            />
-            <WorkflowBuilderCard
-              imageUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fHw%3D&auto=format&fit=crop&q=80&w=900"
-              status="Active"
-              lastUpdated="1 day ago"
-              title="Interview Coaching"
-              description="Personalized interview preparation to help you ace admission interviews and stand out to admissions committees."
-              tags={["Interviews", "Coaching"]}
-              users={[
-                { src: "https://i.pravatar.cc/150?img=6", fallback: "U6" },
-                { src: "https://i.pravatar.cc/150?img=7", fallback: "U7" },
-                { src: "https://i.pravatar.cc/150?img=8", fallback: "U8" },
-              ]}
-              actions={[
-                { Icon: Briefcase, bgColor: "bg-orange-500" },
-                { Icon: Users, bgColor: "bg-red-500" },
-              ]}
-            />
-          </div>
-
-          {/* Types of Educational Consultation */}
-          <div className="mt-20 pt-12 border-t border-border">
-            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-12 text-center">Types of Educational Consultation</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {consultationServices.map((service) => (
-                <div key={service.id} className="bg-card border border-border rounded-xl p-8">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`p-3 ${service.color} rounded-lg`}>
-                      {getIconComponent(service.icon)}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-foreground mb-3">{service.title}</h4>
-                      <div className="space-y-2">
-                        {service.sections.map((section, index) => (
-                          <div key={index}>
-                            <p className="text-sm text-muted-foreground">
-                              <strong>{section.heading}:</strong> {section.description}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            {[
+              {
+                title: "University Selection",
+                description: "Expert guidance in selecting universities that match your academic profile, career goals, and personal preferences.",
+                image: "/images/university-selection.png",
+              },
+              {
+                title: "Application Support",
+                description: "Comprehensive assistance with essay writing, application forms, and strategic positioning for top universities.",
+                image: "/images/application-support.png",
+              },
+              {
+                title: "Interview Coaching",
+                description: "Personalized interview preparation to help you ace admission interviews and stand out to admissions committees.",
+                image: "/images/interview-coaching.png",
+              }
+            ].map((service, index) => (
+              <div
+                key={index}
+                className="group bg-card rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Image Container */}
+                <div className="relative h-56 mb-6 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
-              ))}
-            </div>
+
+                {/* Content Container */}
+                <div className="px-6 pb-6">
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="text-3xl">{service.icon}</span>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
+                  </div>
+                  <p className="text-muted-foreground text-base leading-relaxed mb-4">{service.description}</p>
+
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
