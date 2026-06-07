@@ -130,133 +130,159 @@ export default function EducationalConsultation() {
       </section>
 
       {/* Services */}
-      <section className="bg-gradient-to-b from-background to-background/50 py-20 md:py-11">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Our Consultation Services</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Comprehensive support at every step of your higher education journey</p>
+<section className="bg-gradient-to-b from-background to-background/50 py-20 md:py-16">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+        Our Educational Consulting Services
+      </h2>
+      <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
+        Empowering students, educators, and institutions with expert guidance,
+        innovative learning strategies, and solutions designed for academic success.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+      {[
+        {
+          title: "Academic Counselling",
+          image: "/images/academic-counselling.png",
+          services: [
+            {
+              heading: "Student Guidance",
+              description:
+                "Personalized advice on course selection, study techniques, academic performance, and goal setting.",
+            },
+            {
+              heading: "Career Planning",
+              description:
+                "Helping students discover career interests, define long-term goals, and identify suitable educational pathways.",
+            },
+          ],
+        },
+        {
+          title: "College Admissions Consulting",
+          image: "/images/college-admissions.png",
+          services: [
+            {
+              heading: "Application Assistance",
+              description:
+                "Expert support for applications, essays, interviews, and admission strategies.",
+            },
+            {
+              heading: "School Selection",
+              description:
+                "Guidance in choosing institutions that align with academic strengths, career aspirations, and personal preferences.",
+            },
+          ],
+        },
+        {
+          title: "Special Education Consulting",
+          image: "/images/special-education.png",
+          services: [
+            {
+              heading: "Individualized Education Plans",
+              description:
+                "Support in developing and reviewing IEPs tailored to each student's learning needs.",
+            },
+            {
+              heading: "Support Services",
+              description:
+                "Recommendations on accommodations, resources, and learning support systems for student success.",
+            },
+          ],
+        },
+        {
+          title: "Educational Technology Integration",
+          image: "/images/educational-technology.png",
+          services: [
+            {
+              heading: "Technology Planning",
+              description:
+                "Assisting institutions in selecting and implementing effective digital learning tools and platforms.",
+            },
+            {
+              heading: "Professional Training",
+              description:
+                "Equipping teachers and administrators with practical skills to maximize educational technology.",
+            },
+          ],
+        },
+        {
+          title: "Curriculum Development",
+          image: "/images/curriculum-development.png",
+          services: [
+            {
+              heading: "Curriculum Design",
+              description:
+                "Creating engaging, standards-aligned curricula that meet diverse student learning requirements.",
+            },
+            {
+              heading: "Assessment Strategies",
+              description:
+                "Developing effective evaluation methods to measure student achievement and curriculum performance.",
+            },
+          ],
+        },
+        {
+          title: "Institutional Consulting",
+          image: "/images/institutional-consulting.png",
+          services: [
+            {
+              heading: "Strategic Planning",
+              description:
+                "Helping institutions establish long-term goals, growth strategies, and operational excellence.",
+            },
+            {
+              heading: "Program Evaluation",
+              description:
+                "Assessing educational programs and providing actionable recommendations for improvement.",
+            },
+          ],
+        },
+      ].map((service, index) => (
+        <div
+          key={index}
+          className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        >
+          <div className="relative h-56 overflow-hidden">
+            <Image
+              src={service.image}
+              alt={service.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            {[
-              {
-                title: "University Selection",
-                description: "Expert guidance in selecting universities that match your academic profile, career goals, and personal preferences.",
-                image: "/images/university-selection.png",
-              },
-              {
-                title: "Application Support",
-                description: "Comprehensive assistance with essay writing, application forms, and strategic positioning for top universities.",
-                image: "/images/application-support.png",
-              },
-              {
-                title: "Interview Coaching",
-                description: "Personalized interview preparation to help you ace admission interviews and stand out to admissions committees.",
-                image: "/images/interview-coaching.png",
-              }
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="group bg-card rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                {/* Image Container */}
-                <div className="relative h-56 mb-6 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+
+          <div className="p-6">
+            <h3 className="text-2xl font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
+              {service.title}
+            </h3>
+
+            <div className="space-y-5">
+              {service.services.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="border-l-4 border-primary/20 pl-4"
+                >
+                  <h4 className="font-semibold text-foreground mb-2">
+                    {item.heading}
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-
-                {/* Content Container */}
-                <div className="px-6 pb-6">
-                  <div className="flex items-start gap-3 mb-3">
-                    <span className="text-3xl">{service.icon}</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{service.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground text-base leading-relaxed mb-4">{service.description}</p>
-
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Our Students in Countries Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-25">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Students in Countries</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We have successfully guided students to universities across the globe.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Front_view_of_Statue_of_Liberty_%28cropped%29.jpg/960px-Front_view_of_Statue_of_Liberty_%28cropped%29.jpg"
-              location="United States"
-              flag="🇺��"
-              stats="1,250+ Students"
-              href="#"
-              themeColor="210 100% 50%"
-            />
-          </div>
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&auto=format&fit=crop"
-              location="United Kingdom"
-              flag="🇬🇧"
-              stats="680+ Students"
-              href="#"
-              themeColor="0 0% 20%"
-            />
-          </div>
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/1280px-Moraine_Lake_17092005.jpg"
-              location="Canada"
-              flag="🇨🇦"
-              stats="520+ Students"
-              href="#"
-              themeColor="0 100% 35%"
-            />
-          </div>
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg/1920px-Sydney_Opera_House_and_Harbour_Bridge_Dusk_%282%29_2019-06-21.jpg"
-              location="Australia"
-              flag="🇦🇺"
-              stats="410+ Students"
-              href="#"
-              themeColor="45 93% 47%"
-            />
-          </div>
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Brandenburger_Tor_abends.jpg/1280px-Brandenburger_Tor_abends.jpg"
-              location="Germany"
-              flag="🇩🇪"
-              stats="380+ Students"
-              href="#"
-              themeColor="11 100% 50%"
-            />
-          </div>
-          <div className="h-[400px]">
-            <DestinationCard
-              imageUrl="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Singapore_Merlion.jpg/1280px-Singapore_Merlion.jpg"
-              location="Singapore"
-              flag="🇸🇬"
-              stats="290+ Students"
-              href="#"
-              themeColor="39 100% 50%"
-            />
-          </div>
-        </div>
-      </section>
-
+    
 
 
       {/* Consultation Form */}
