@@ -93,12 +93,7 @@ export function Header() {
             </Link>
           ))}
 
-          <Link
-            href="/courses"
-            className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
-          >
-            Register Now
-          </Link>
+         
         </div>
 
         {/* Mobile Menu Button */}
