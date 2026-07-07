@@ -419,13 +419,13 @@ export default function Courses() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Transform Your Career?</h2>
           <p className="text-muted-foreground text-lg mb-8 text-balance">
-            Join thousands of students who have already achieved their career goals through our expert-led courses.
+            Join With Students who have already achieved their career goals through our expert-led courses.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
           >
-            Get in Touch
+            Register Now
           </Link>
         </div>
       </section>
