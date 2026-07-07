@@ -1,5 +1,5 @@
 {
-  "availableBatches": [
+  "ongoingBatches": [
     {
       "id": "batch-1",
       "courseTitle": "Complete Interview Preparation",
@@ -12,7 +12,40 @@
       "level": "Intermediate",
       "description": "Master technical and behavioral interviews with hands-on practice.",
       "topics": ["Data Structures", "Algorithms", "System Design", "Behavioral Questions", "Mock Interviews"],
-      "price": "₹4,999"
+      "price": "₹4,999",
+      "registration_link": ""
+    }
+  ],
+  "upcomingBatches": [
+    {
+      "id": "batch-2",
+      "courseTitle": "Advanced Data Structures & Algorithms",
+      "startDate": "2025-03-10",
+      "endDate": "2025-05-31",
+      "duration": "12 weeks",
+      "schedule": "Tue & Thu, 6:30 PM - 8:30 PM IST",
+      "seats": 20,
+      "seatsRemaining": 20,
+      "level": "Advanced",
+      "description": "Deep dive into advanced data structures, algorithms, and problem-solving strategies.",
+      "topics": ["Advanced Algorithms", "Graph Theory", "Dynamic Programming", "Competitive Programming", "Optimization Techniques"],
+      "price": "₹6,999",
+      "registration_link": "https://forms.example.com/register-dsa"
+    },
+    {
+      "id": "batch-3",
+      "courseTitle": "Career Development & Soft Skills",
+      "startDate": "2025-04-01",
+      "endDate": "2025-04-30",
+      "duration": "4 weeks",
+      "schedule": "Sat & Sun, 3:00 PM - 4:30 PM IST",
+      "seats": 25,
+      "seatsRemaining": 25,
+      "level": "Beginner",
+      "description": "Enhance your professional skills, communication, and career growth strategies.",
+      "topics": ["Communication Skills", "Leadership", "Networking", "Resume Building", "Interview Skills"],
+      "price": "₹2,999",
+      "registration_link": "https://forms.example.com/register-soft-skills"
     }
   ],
   "previousBatches": [
