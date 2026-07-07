@@ -1,26 +1,56 @@
 {
-  "availableBatches": [
+  "ongoingBatches": [
     {
       "id": "batch-1",
       "courseTitle": "Complete Interview Preparation",
-      "startDate": "2024-02-15",
-      "endDate": "2024-04-15",
+      "startDate": "2024-06-21",
+      "endDate": "2026-08-30",
       "duration": "8 weeks",
       "schedule": "Mon & Wed, 7:00 PM - 9:00 PM IST",
       "seats": 15,
       "seatsRemaining": 5,
       "level": "Intermediate",
       "description": "Master technical and behavioral interviews with hands-on practice.",
-      "topics": ["Data Structures", "Algorithms", "System Design", "Behavioral Questions", "Mock Interviews"],
-      "price": "₹4,999"
+      "topics": [
+        "Data Structures",
+        "Algorithms",
+        "System Design",
+        "Behavioral Questions",
+        "Mock Interviews"
+      ],
+      "price": "₹4,999",
+      "registration_link": ""
+    }
+  ],
+  "upcomingBatches": [
+    {
+      "id": "batch-2",
+      "courseTitle": "Advanced Data Structures & Algorithms",
+      "startDate": "2026-07-10",
+      "endDate": "2026-09-31",
+      "duration": "12 weeks",
+      "schedule": "Tue & Thu, 6:30 PM - 8:30 PM IST",
+      "seats": 20,
+      "seatsRemaining": 20,
+      "level": "Advanced",
+      "description": "Deep dive into advanced data structures, algorithms, and problem-solving strategies.",
+      "topics": [
+        "Advanced Algorithms",
+        "Graph Theory",
+        "Dynamic Programming",
+        "Competitive Programming",
+        "Optimization Techniques"
+      ],
+      "price": "₹6,999",
+      "registration_link": "https://forms.gle/1Vr9RwomF1AqKqeE9"
     }
   ],
   "previousBatches": [
     {
       "id": "prev-batch-1",
       "courseTitle": "Complete Interview Preparation",
-      "startDate": "2024-01-15",
-      "endDate": "2024-03-15",
+      "startDate": "2026-01-15",
+      "endDate": "2026-03-15",
       "duration": "8 weeks",
       "instructor": "Sarah Johnson",
       "studentCount": 18,
@@ -41,8 +71,8 @@
     {
       "id": "prev-batch-2",
       "courseTitle": "Advanced Data Structures & Algorithms",
-      "startDate": "2023-12-01",
-      "endDate": "2024-02-28",
+      "startDate": "2025-12-01",
+      "endDate": "2026-02-28",
       "duration": "12 weeks",
       "instructor": "Michael Chen",
       "studentCount": 22,
@@ -58,8 +88,8 @@
     {
       "id": "prev-batch-3",
       "courseTitle": "Career Development & Soft Skills",
-      "startDate": "2024-01-01",
-      "endDate": "2024-02-01",
+      "startDate": "2025-11-01",
+      "endDate": "2026-02-01",
       "duration": "4 weeks",
       "instructor": "Emily Rodriguez",
       "studentCount": 25,

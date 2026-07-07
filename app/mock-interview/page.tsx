@@ -45,10 +45,10 @@ export default function MockInterviewPage() {
               </p>
               <div>
                 <Link
-                  href="/contact"
+                  href="https://forms.gle/dgwtQV38bFQfdWHR7"
                   className="inline-flex items-center justify-center border-2  border-purple-500 to-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-cyan-50 transition-colors uppercase tracking-wider"
                 >
-                  Get Started
+                  Schedule Interview
                 </Link>
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function MockInterviewPage() {
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
-                  href="/contact"
+                  href="https://forms.gle/dgwtQV38bFQfdWHR7"
                   className="inline-flex items-center justify-center gap-2 bg-primary-foreground text-purple-600  px-6 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity"
                 >
                   Schedule Mock Interview

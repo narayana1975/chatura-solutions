@@ -41,6 +41,9 @@ export default function Blogs() {
         // Load all blog JSON files from data/blogs directory
         const blogs: BlogPost[] = []
         const blogFiles = [
+          'interview-tips-success',
+          'career-transition-guide',
+          'education-planning-101',
           'top-10-interview-questions',
           'choosing-right-university',
           'essential-skills-2024',

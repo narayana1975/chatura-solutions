@@ -2,7 +2,6 @@
 
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { useState } from 'react'
 import { Globe, GraduationCap, Briefcase, ArrowRight, Users } from 'lucide-react'
 import { DestinationCard } from '@/components/ui/card-21'
 import ConsultationTestimonials from '@/components/ui/consultation-testimonials'
@@ -10,68 +9,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function EducationalConsultation() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    target_country: '',
-    target_university: '',
-    education_level: '',
-  })
-  const [isLoading, setIsLoading] = useState(false)
-  const [message, setMessage] = useState('')
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
-    setMessage('')
-
-    try {
-      const response = await fetch('/api/consultation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit form')
-      }
-
-      setMessage('Consultation request submitted! Our executive will contact you Soon.')
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        target_country: '',
-        target_university: '',
-        education_level: '',
-      })
-
-      setTimeout(() => setMessage(''), 5000)
-    } catch (error) {
-      console.error('Error:', error)
-      setMessage('Failed to submit. Please try again or contact us directly.')
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleEnquireClick = () => {
-    const formSection = document.querySelector('[data-consultation-form]')
-    formSection?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -122,12 +59,12 @@ export default function EducationalConsultation() {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={handleEnquireClick}
+              <Link
+                href="/contact"
                 className="inline-flex items-center justify-center border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
               >
                 Book Educational Consultation
-              </button>
+              </Link>
             </div>
 
             {/* Right Column - Image Only */}
@@ -300,123 +237,7 @@ export default function EducationalConsultation() {
     
 
 
-      {/* Consultation Form */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-20" data-consultation-form>
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">Schedule Your Consultation</h2>
-        <p className="text-center text-muted-foreground mb-12">
-          Fill out the form below and our team will get in touch within 24 hours to discuss your educational goals.
-        </p>
 
-        <div className="bg-card border border-border rounded-lg p-8 md:p-12">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="John Doe"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="john@example.com"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                placeholder="+1 (234) 567-890"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-foreground mb-2">Education Level</label>
-              <select
-                name="education_level"
-                value={formData.education_level}
-                onChange={handleChange}
-                required
-                className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-              >
-                <option value="">Select your education level</option>
-                <option value="high-school">High School</option>
-                <option value="bachelor">Bachelor&apos;s Degree</option>
-                <option value="master">Master&apos;s Degree</option>
-                <option value="phd">Ph.D.</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Target Country</label>
-                <input
-                  type="text"
-                  name="target_country"
-                  value={formData.target_country}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="e.g., USA, UK, Canada"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Target University (Optional)</label>
-                <input
-                  type="text"
-                  name="target_university"
-                  value={formData.target_university}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-                  placeholder="e.g., Harvard, Stanford"
-                />
-              </div>
-            </div>
-
-            {message && (
-              <div
-                className={`p-4 rounded-lg text-sm ${message.includes('submitted')
-                  ? 'bg-green-50 text-green-800 border border-green-200'
-                  : 'bg-red-50 text-red-800 border border-red-200'
-                  }`}
-              >
-                {message}
-              </div>
-            )}
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full bg-primary text-primary-foreground px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50 flex items-center justify-center gap-2"
-            >
-              {isLoading ? 'Submitting...' : 'Request Consultation'} {!isLoading && <ArrowRight size={20} />}
-            </button>
-
-            <p className="text-xs text-muted-foreground text-center">
-              We respect your privacy. Your information is secure and will only be used to contact you about your consultation.
-            </p>
-          </form>
-        </div>
-      </section>
 
             {/* Testimonials Section */}
       <ConsultationTestimonials />

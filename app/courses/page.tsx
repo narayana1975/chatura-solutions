@@ -14,13 +14,14 @@ interface AvailableBatch {
   endDate: string
   duration: string
   schedule: string
-  instructor: string
+  instructor?: string
   seats: number
   seatsRemaining: number
   level: string
   description: string
   topics: string[]
   price: string
+  registration_link?: string
 }
 
 interface PreviousBatch {
@@ -40,7 +41,8 @@ interface PreviousBatch {
 }
 
 interface CoursesData {
-  availableBatches: AvailableBatch[]
+  ongoingBatches: AvailableBatch[]
+  upcomingBatches: AvailableBatch[]
   previousBatches: PreviousBatch[]
 }
 
@@ -53,7 +55,7 @@ const levelColors: { [key: string]: string } = {
 export default function Courses() {
   const [courses, setCourses] = useState<CoursesData | null>(null)
   const [loading, setLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState<'available' | 'previous'>('available')
+  const [activeTab, setActiveTab] = useState<'ongoing' | 'upcoming' | 'previous'>('ongoing')
   const [searchQuery, setSearchQuery] = useState('')
   const [filteredBatches, setFilteredBatches] = useState<AvailableBatch[]>([])
 
@@ -64,7 +66,7 @@ export default function Courses() {
         if (response.ok) {
           const data = await response.json()
           setCourses(data)
-          setFilteredBatches(data.availableBatches)
+          setFilteredBatches(data.ongoingBatches)
         }
       } catch (error) {
         console.error('Error loading courses:', error)
@@ -79,18 +81,20 @@ export default function Courses() {
   useEffect(() => {
     if (courses && searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
-      const filtered = courses.availableBatches.filter(
+      const batchesToSearch = activeTab === 'ongoing' ? courses.ongoingBatches : activeTab === 'upcoming' ? courses.upcomingBatches : courses.previousBatches
+      const filtered = batchesToSearch.filter(
         (batch) =>
           batch.courseTitle.toLowerCase().includes(query) ||
           batch.description.toLowerCase().includes(query) ||
-          batch.instructor.toLowerCase().includes(query) ||
+          (batch.instructor?.toLowerCase().includes(query) ?? false) ||
           batch.topics.some((topic) => topic.toLowerCase().includes(query))
       )
       setFilteredBatches(filtered)
     } else if (courses) {
-      setFilteredBatches(courses.availableBatches)
+      const batchesToShow = activeTab === 'ongoing' ? courses.ongoingBatches : activeTab === 'upcoming' ? courses.upcomingBatches : courses.previousBatches
+      setFilteredBatches(batchesToShow)
     }
-  }, [searchQuery, courses])
+  }, [searchQuery, courses, activeTab])
 
   if (loading) {
     return (
@@ -201,36 +205,48 @@ export default function Courses() {
             />
           </div>
         </div>
-        <div className="flex gap-4 border-b border-border">
+        <div className="flex gap-4 border-b border-border overflow-x-auto">
           <button
-            onClick={() => setActiveTab('available')}
-            className={`pb-4 px-4 font-semibold transition-colors ${activeTab === 'available'
+            onClick={() => setActiveTab('ongoing')}
+            className={`pb-4 px-4 font-semibold transition-colors whitespace-nowrap ${activeTab === 'ongoing'
                 ? 'text-primary border-b-2 border-primary -mb-1'
                 : 'text-muted-foreground hover:text-foreground'
               }`}
           >
             <span className="flex items-center gap-2">
               <Zap size={20} />
-              Ongoing Batches ({filteredBatches.length})
+              Ongoing Batches ({courses?.ongoingBatches.length || 0})
+            </span>
+          </button>
+          <button
+            onClick={() => setActiveTab('upcoming')}
+            className={`pb-4 px-4 font-semibold transition-colors whitespace-nowrap ${activeTab === 'upcoming'
+                ? 'text-primary border-b-2 border-primary -mb-1'
+                : 'text-muted-foreground hover:text-foreground'
+              }`}
+          >
+            <span className="flex items-center gap-2">
+              <TrendingUp size={20} />
+              Upcoming Batches ({courses?.upcomingBatches.length || 0})
             </span>
           </button>
           <button
             onClick={() => setActiveTab('previous')}
-            className={`pb-4 px-4 font-semibold transition-colors ${activeTab === 'previous'
+            className={`pb-4 px-4 font-semibold transition-colors whitespace-nowrap ${activeTab === 'previous'
                 ? 'text-primary border-b-2 border-primary -mb-1'
                 : 'text-muted-foreground hover:text-foreground'
               }`}
           >
             <span className="flex items-center gap-2">
               <Star size={20} />
-              Previous Batches ({courses.previousBatches.length})
+              Previous Batches ({courses?.previousBatches.length || 0})
             </span>
           </button>
         </div>
       </section>
 
-      {/* Available Batches */}
-      {activeTab === 'available' && (
+      {/* Ongoing & Upcoming Batches */}
+      {(activeTab === 'ongoing' || activeTab === 'upcoming') && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-15 md:py-0">
           {filteredBatches.length === 0 ? (
             <div className="text-center py-12">
@@ -259,19 +275,21 @@ export default function Courses() {
                       <p className="text-muted-foreground mb-6 text-balance">{batch.description}</p>
 
                       {/* Topics */}
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-foreground mb-2">Topics Covered:</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {batch.topics.map((topic, idx) => (
-                            <span
-                              key={idx}
-                              className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md border border-primary/20"
-                            >
-                              {topic}
-                            </span>
-                          ))}
+                      {batch.topics && batch.topics.length > 0 && (
+                        <div className="mb-6">
+                          <h4 className="text-sm font-semibold text-foreground mb-2">Topics Covered:</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {batch.topics.map((topic, idx) => (
+                              <span
+                                key={idx}
+                                className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-md border border-primary/20"
+                              >
+                                {topic}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       {/* Details */}
                       <div className="space-y-3 mb-6 pb-6 border-b border-border">
@@ -324,12 +342,20 @@ export default function Courses() {
                       </div>
 
                       {/* CTA Button */}
-                      <Link
-                        href="/contact"
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-colors text-center block"
-                      >
-                        Register Now
-                      </Link>
+                      {activeTab === 'upcoming' ? (
+                        <a
+                          href={batch.registration_link || '/contact'}
+                          target={batch.registration_link ? '_blank' : undefined}
+                          rel={batch.registration_link ? 'noopener noreferrer' : undefined}
+                          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-colors text-center block"
+                        >
+                          Register Now
+                        </a>
+                      ) : (
+                        <div className="w-full bg-muted text-muted-foreground font-semibold py-3 px-6 rounded-lg text-center">
+                          Registration Closed
+                        </div>
+                      )}
                     </div>
                   </div>
                 )
