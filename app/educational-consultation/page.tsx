@@ -82,17 +82,17 @@ export default function EducationalConsultation() {
         <div className="max-w-7xl mx-auto">
           {/* Subheading */}
           <p className="text-center text-black text-2xl md:text-3xl font-bold mb-4">
-            Find your perfect university
+            Transform Your Educational Future
           </p>
 
           {/* Main Heading */}
           <h1 className="text-center text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-            Get <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Expert Guidance</span> for Higher Education
+            <span className="bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent">Expert Educational Consultation</span> for Success
           </h1>
 
           {/* Description */}
-          <p className="text-center max-w-3xl mx-auto text-black text-lg md:text-xl mb-12 leading-relaxed">
-            Choosing the right university is one of the most important decisions of your life. Our expert consultants have guided <span className="font-semibold">hundreds of students to their dream universities</span> across the globe.
+          <p className="text-center max-w-4xl mx-auto text-black text-lg md:text-xl mb-12 leading-relaxed">
+            Educational consultation involves providing expert advice and guidance to students, parents, and educational institutions to enhance learning experiences and outcomes. We help you navigate academic planning, career guidance, curriculum development, and educational technology integration.
           </p>
 
           {/* Content Grid */}
@@ -100,19 +100,34 @@ export default function EducationalConsultation() {
             {/* Left Column */}
             <div className="flex flex-col justify-center">
               <h2 className="text-3xl md:text-4xl font-bold text-blue-600 mb-6">
-                Personalized consultation for your educational journey
+                Comprehensive Educational Guidance
               </h2>
-              <p className="text-black text-lg mb-8 leading-relaxed">
-                Our experienced counselors provide one-on-one guidance to help you select universities that match your academic profile, career goals, and personal preferences. From shortlisting options to acing admission interviews, we&apos;ve got you covered.
-              </p>
-              <div>
-                <button
-                  onClick={handleEnquireClick}
-                  className="inline-flex items-center justify-center border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
-                >
-                  Enquire Now
-                </button>
+              <div className="space-y-4 mb-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Academic Planning</h3>
+                  <p className="text-black text-base leading-relaxed">
+                    Personalized advice on course selection, study techniques, academic performance optimization, and strategic goal setting tailored to your unique learning style.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Career Guidance</h3>
+                  <p className="text-black text-base leading-relaxed">
+                    Discover your career interests, define long-term goals, and identify educational pathways that align with your aspirations and market opportunities.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2">University Selection & Admissions</h3>
+                  <p className="text-black text-base leading-relaxed">
+                    Expert guidance in selecting universities that match your academic profile, values, and career objectives. We guide you through the entire application process.
+                  </p>
+                </div>
               </div>
+              <button
+                onClick={handleEnquireClick}
+                className="inline-flex items-center justify-center border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
+              >
+                Enquire Now
+              </button>
             </div>
 
             {/* Right Column - Image Only */}
