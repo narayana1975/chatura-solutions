@@ -39,7 +39,7 @@ function ConsultationTestimonials() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            Success Stories from Our Clients
+            Transformative Educational Journeys
           </TimelineContent>
           <TimelineContent
             as="p"
@@ -48,7 +48,7 @@ function ConsultationTestimonials() {
             customVariants={revealVariants}
             timelineRef={testimonialRef}
           >
-            Hear how our expert guidance has helped students achieve their educational dreams
+            Discover how strategic educational consultation has empowered students to make informed decisions and achieve their academic and career aspirations
           </TimelineContent>
         </article>
 
@@ -65,15 +65,14 @@ function ConsultationTestimonials() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:50px_56px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-50"></div>
               <article className="mt-auto relative z-10">
                 <p className="text-foreground mb-6">
-                  "The consultation service helped me identify the perfect universities for my
-                  academic profile. The personalized guidance was invaluable in my application process."
+                  "The consultation team helped me understand my strengths and align them with the right academic pathway. Their strategic guidance led to acceptances from my top-choice universities."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-foreground lg:text-lg">
                       Priya Sharma
                     </h3>
-                    <p className="text-muted-foreground text-sm">Student, IIT Admission</p>
+                    <p className="text-muted-foreground text-sm">Harvard & Stanford Admit</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop"
@@ -94,13 +93,12 @@ function ConsultationTestimonials() {
             >
               <article className="mt-auto relative z-10">
                 <p className="mb-6">
-                  "Excellent support throughout my university selection process. The team&apos;s
-                  expertise made all the difference."
+                  "Beyond university selection, they guided my entire academic strategy. Their insights on career alignment transformed my educational trajectory."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-lg">Arjun Desai</h3>
-                    <p className="text-sm opacity-90">Oxford University</p>
+                    <p className="text-sm opacity-90">Oxford & Cambridge Scholar</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop"
@@ -124,15 +122,14 @@ function ConsultationTestimonials() {
             >
               <article className="mt-auto relative z-10">
                 <p className="text-foreground text-sm md:text-base mb-6">
-                  "Their comprehensive guidance on application essays and interview prep was
-                  outstanding. Highly recommend to anyone pursuing higher education abroad."
+                  "The consultation sessions were transformative. They helped me develop a clear roadmap for my academic and professional goals, making every decision purposeful."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-foreground lg:text-lg">
                       Neha Patel
                     </h3>
-                    <p className="text-muted-foreground text-sm">MIT Graduate</p>
+                    <p className="text-muted-foreground text-sm">MIT & Caltech Admit</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=687&auto=format&fit=crop"
@@ -153,13 +150,12 @@ function ConsultationTestimonials() {
             >
               <article className="mt-auto relative z-10">
                 <p className="text-foreground text-sm md:text-base mb-6">
-                  "The career path planning sessions helped me align my education with my goals.
-                  Exceptional service from start to finish."
+                  "What impressed me most was their holistic approach to educational planning. They didn't just help me choose a university—they shaped my entire future path."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-foreground lg:text-lg">Rohit Kumar</h3>
-                    <p className="text-muted-foreground text-sm">Stanford University</p>
+                    <p className="text-muted-foreground text-sm">Stanford PhD Scholar</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop"
@@ -180,15 +176,14 @@ function ConsultationTestimonials() {
             >
               <article className="mt-auto relative z-10">
                 <p className="text-foreground text-sm md:text-base mb-6">
-                  "Responsive, knowledgeable, and genuinely invested in student success. This is
-                  the kind of guidance every student needs."
+                  "The consultation process made me realize my potential. They equipped me with the confidence and clarity needed to excel academically and professionally."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-foreground lg:text-lg">
                       Aisha Khan
                     </h3>
-                    <p className="text-muted-foreground text-sm">Cambridge University</p>
+                    <p className="text-muted-foreground text-sm">Cambridge & LSE Dual Program</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop"
@@ -212,13 +207,12 @@ function ConsultationTestimonials() {
             >
               <article className="mt-auto relative z-10">
                 <p className="mb-6">
-                  "A true partner in my educational journey. Their insights shaped my entire
-                  university selection strategy."
+                  "They provided not just advice, but a framework for lifelong academic and personal growth. The impact extends far beyond my college years."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-lg">Vikram Singh</h3>
-                    <p className="text-sm opacity-90">Harvard University</p>
+                    <p className="text-sm opacity-90">Harvard Graduate & Entrepreneur</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=687&auto=format&fit=crop"
@@ -240,13 +234,12 @@ function ConsultationTestimonials() {
               <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:50px_56px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] opacity-50"></div>
               <article className="mt-auto relative z-10">
                 <p className="text-foreground mb-6">
-                  "From university selection to application submission, the comprehensive support
-                  I received was transformative. Highly professional and results-driven team."
+                  "The educational consultation transformed my perspective on what's possible. With their guidance, I not only gained admission to top universities but discovered my true passion."
                 </p>
                 <div className="flex justify-between items-end">
                   <div>
                     <h3 className="font-semibold text-foreground text-lg">Sneha Gupta</h3>
-                    <p className="text-muted-foreground text-sm">Yale University</p>
+                    <p className="text-muted-foreground text-sm">Yale & Princeton Scholar</p>
                   </div>
                   <Image
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=687&auto=format&fit=crop"

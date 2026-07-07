@@ -291,10 +291,10 @@ export default function Home() {
                 </Link>
 
                 <Link
-                  href="/contact"
+                  href="/mock-interview"
                   className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground text-primary-foreground px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-foreground/10 transition-colors"
                 >
-                  Get in Touch
+                  Book Mock Interview
                 </Link>
               </div>
             </div>

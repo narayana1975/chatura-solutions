@@ -126,7 +126,7 @@ export default function EducationalConsultation() {
                 onClick={handleEnquireClick}
                 className="inline-flex items-center justify-center border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors uppercase tracking-wider"
               >
-                Enquire Now
+                Book Educational Consultation
               </button>
             </div>
 
