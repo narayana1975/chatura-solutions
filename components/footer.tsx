@@ -57,29 +57,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Careers */}
-          {/* <div>
-            <h3 className="font-semibold text-foreground mb-4">Careers</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Intern
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Trainer
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Fulltime
-                </Link>
-              </li>
-            </ul>
-          </div> */}
+       
 
-          {/* Column 5: Social */}
+          {/* Column 4: Social */}
           <div>
             <h3 className="font-semibold text-foreground mb-4">Social</h3>
             <ul className="space-y-2 text-sm">
