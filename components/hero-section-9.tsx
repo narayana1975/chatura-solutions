@@ -75,7 +75,7 @@ const floatingVariants = {
   },
 }
 
-const HeroSection = ({ title, subtitle, actions, stats, images, className }: HeroSectionProps) => {
+const HeroSection = ({ title, subtitle, actions, images, className }: HeroSectionProps) => {
   const router = useRouter()
 
   const handleAction = (action: ActionProps) => {
