@@ -112,17 +112,6 @@ const HeroSection = ({ title, subtitle, actions, stats, images, className }: Her
               </Button>
             ))}
           </motion.div>
-          <motion.div className="mt-12 flex flex-wrap justify-center gap-8" variants={itemVariants}>
-            {stats.map((stat, index) => (
-              <div key={index} className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-muted">{stat.icon}</div>
-                <div>
-                  <p className="text-xl font-bold text-foreground">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
 
         {/* Right Column: Image Collage */}
